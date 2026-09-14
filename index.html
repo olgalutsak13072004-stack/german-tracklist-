@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch Journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F1E7;
+  --surface:#FFFFFF;
+  --surface-sunken:#EFE7D6;
+  --border:#E4D9C4;
+  --ink:#2A2724;
+  --ink-soft:#6B6255;
+  --ink-faint:#9C9284;
+  --sage:#6F8C6C;
+  --sage-soft:#E1E9DC;
+  --sage-strong:#4F6B4C;
+  --blue:#5A7B98;
+  --blue-soft:#E3EAF0;
+  --blue-strong:#3F5A73;
+  --wine:#9B4F49;
+  --wine-soft:#F1E0DD;
+  --gold:#AD8A3F;
+  --gold-soft:#F2EAD3;
+  --shadow-sm:0 1px 2px rgba(42,32,10,0.05), 0 1px 1px rgba(42,32,10,0.04);
+  --shadow:0 2px 4px rgba(42,32,10,0.05), 0 12px 28px -14px rgba(42,32,10,0.22);
+  --shadow-lg:0 8px 16px rgba(42,32,10,0.06), 0 24px 48px -20px rgba(42,32,10,0.28);
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:20px;
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1D1B17;
+    --surface:#262320;
+    --surface-sunken:#2C2822;
+    --border:#3B362D;
+    --ink:#ECE5D8;
+    --ink-soft:#B3A996;
+    --ink-faint:#7C7565;
+    --sage:#8FB08B;
+    --sage-soft:#2B3529;
+    --sage-strong:#B7D2B3;
+    --blue:#8FAEC9;
+    --blue-soft:#26313B;
+    --blue-strong:#BFD8EA;
+    --wine:#D68B84;
+    --wine-soft:#3B2724;
+    --gold:#D6B564;
+    --gold-soft:#362D1C;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow:0 2px 4px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+    --shadow-lg:0 8px 16px rgba(0,0,0,0.35), 0 24px 48px -20px rgba(0,0,0,0.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1D1B17;
+  --surface:#262320;
+  --surface-sunken:#2C2822;
+  --border:#3B362D;
+  --ink:#ECE5D8;
+  --ink-soft:#B3A996;
+  --ink-faint:#7C7565;
+  --sage:#8FB08B;
+  --sage-soft:#2B3529;
+  --sage-strong:#B7D2B3;
+  --blue:#8FAEC9;
+  --blue-soft:#26313B;
+  --blue-strong:#BFD8EA;
+  --wine:#D68B84;
+  --wine-soft:#3B2724;
+  --gold:#D6B564;
+  --gold-soft:#362D1C;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+  --shadow:0 2px 4px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+  --shadow-lg:0 8px 16px rgba(0,0,0,0.35), 0 24px 48px -20px rgba(0,0,0,0.6);
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  font-size:15px;
+  line-height:1.5;
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;margin:0;text-wrap:balance;color:var(--ink);}
+p{margin:0;}
+button{font-family:inherit;font-size:inherit;}
+input,select,textarea{font-family:inherit;font-size:inherit;color:var(--ink);}
+::selection{background:var(--sage-soft);}
+a{color:var(--blue-strong);}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums;}
+.hidden{display:none !important;}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important;}}
+
+/* ---------- shell ---------- */
+.app-shell{display:flex;min-height:100vh;}
+.sidebar{
+  width:232px;flex:none;background:var(--surface-sunken);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;padding:22px 14px;gap:22px;position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.brand{padding:0 8px;}
+.brand-title{font-family:var(--font-display);font-size:19px;font-weight:600;letter-spacing:.2px;}
+.brand-sub{font-size:11.5px;color:var(--ink-soft);margin-top:3px;letter-spacing:.2px;}
+.level-chip{
+  margin:2px 6px 0;padding:9px 12px;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow-sm);
+}
+.level-chip .lc-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--ink-faint);}
+.level-chip .lc-value{font-family:var(--font-mono);font-weight:600;font-size:15px;color:var(--sage-strong);}
+.nav-group{display:flex;flex-direction:column;gap:2px;flex:1;}
+.nav-item{
+  display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:var(--r-sm);color:var(--ink-soft);
+  text-decoration:none;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;font-size:13.5px;font-weight:500;
+  transition:background .12s ease, color .12s ease;
+}
+.nav-item svg{width:17px;height:17px;flex:none;opacity:.85;}
+.nav-item:hover{background:var(--surface);color:var(--ink);}
+.nav-item.active{background:var(--sage-soft);color:var(--sage-strong);font-weight:600;}
+.nav-item.active svg{opacity:1;}
+.sidebar-foot{padding:0 8px;font-size:11px;color:var(--ink-faint);}
+
+.main-col{flex:1;min-width:0;display:flex;flex-direction:column;}
+.topbar{
+  position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;padding:14px 28px;
+}
+.search-wrap{position:relative;flex:1;max-width:480px;}
+.search-input{
+  width:100%;padding:9px 14px 9px 36px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--ink);
+}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--ink-faint);pointer-events:none;}
+.search-results{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-md);box-shadow:var(--shadow-lg);max-height:60vh;overflow-y:auto;z-index:30;
+}
+.search-group-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-faint);padding:10px 14px 4px;}
+.search-result-row{padding:9px 14px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+.search-result-row:hover{background:var(--surface-sunken);}
+.search-empty{padding:16px 14px;color:var(--ink-faint);font-size:13px;}
+.topbar-spacer{flex:1;}
+.icon-btn{
+  width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:var(--surface);display:flex;
+  align-items:center;justify-content:center;cursor:pointer;color:var(--ink-soft);flex:none;
+}
+.icon-btn:hover{color:var(--ink);border-color:var(--ink-faint);}
+.icon-btn svg{width:16px;height:16px;}
+
+.view{padding:26px 28px 100px;max-width:1180px;}
+.view-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+.view-title{font-size:26px;}
+.view-sub{color:var(--ink-soft);font-size:13.5px;margin-top:4px;}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;border:1px solid var(--border);
+  background:var(--surface);color:var(--ink);cursor:pointer;font-weight:600;font-size:13.5px;white-space:nowrap;
+  transition:transform .08s ease, box-shadow .12s ease;
+}
+.btn:hover{box-shadow:var(--shadow-sm);}
+.btn:active{transform:scale(.97);}
+.btn svg{width:15px;height:15px;}
+.btn-primary{background:var(--sage-strong);border-color:var(--sage-strong);color:#fff;}
+.btn-primary:hover{background:var(--sage-strong);filter:brightness(1.06);}
+.btn-ghost{background:transparent;border-color:transparent;}
+.btn-ghost:hover{background:var(--surface-sunken);}
+.btn-danger{color:var(--wine);border-color:var(--wine-soft);background:var(--wine-soft);}
+.btn-sm{padding:6px 12px;font-size:12.5px;}
+.btn-block{width:100%;justify-content:center;}
+.btn[disabled]{opacity:.5;cursor:not-allowed;}
+
+/* ---------- cards & grids ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);box-shadow:var(--shadow-sm);}
+.card-pad{padding:18px 20px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin-bottom:22px;}
+.stat-tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 18px;box-shadow:var(--shadow-sm);}
+.stat-tile .st-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-faint);}
+.stat-tile .st-value{font-family:var(--font-display);font-size:30px;margin-top:6px;color:var(--ink);}
+.stat-tile .st-hint{font-size:12px;color:var(--ink-soft);margin-top:3px;}
+.stat-tile.accent-sage{border-color:var(--sage-soft);}
+.stat-tile.accent-sage .st-value{color:var(--sage-strong);}
+.stat-tile.accent-gold .st-value{color:var(--gold);}
+.stat-tile.accent-blue .st-value{color:var(--blue-strong);}
+
+.dash-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:start;}
+@media (max-width:900px){.dash-grid{grid-template-columns:1fr;}}
+
+.section-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--shadow-sm);margin-bottom:18px;}
+.section-card h3{font-size:16px;}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px;}
+.section-head .count-pill{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);background:var(--surface-sunken);padding:2px 8px;border-radius:999px;}
+
+/* CEFR route */
+.route{display:flex;align-items:center;padding:10px 4px 4px;}
+.route-stop{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;flex:none;width:64px;}
+.route-dot{width:15px;height:15px;border-radius:50%;background:var(--surface-sunken);border:2px solid var(--border);z-index:1;}
+.route-stop.done .route-dot{background:var(--sage);border-color:var(--sage-strong);}
+.route-stop.current .route-dot{background:var(--blue);border-color:var(--blue-strong);width:19px;height:19px;box-shadow:0 0 0 4px var(--blue-soft);}
+.route-label{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-faint);font-weight:600;}
+.route-stop.done .route-label,.route-stop.current .route-label{color:var(--ink);}
+.route-line{flex:1;height:2px;background:var(--border);margin-top:-24px;}
+.route-line.done{background:var(--sage);}
+
+.checklist{display:flex;flex-direction:column;gap:2px;}
+.check-row{display:flex;align-items:center;gap:11px;padding:9px 4px;border-radius:var(--r-sm);cursor:pointer;}
+.check-row:hover{background:var(--surface-sunken);}
+.check-box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--ink-faint);flex:none;display:flex;align-items:center;justify-content:center;}
+.check-row.checked .check-box{background:var(--sage-strong);border-color:var(--sage-strong);}
+.check-row.checked span.check-text{color:var(--ink-faint);text-decoration:line-through;}
+.check-box svg{width:11px;height:11px;color:#fff;}
+
+.mini-list{display:flex;flex-direction:column;}
+.mini-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid var(--border);}
+.mini-row:last-child{border-bottom:none;}
+.mini-main{min-width:0;}
+.mini-title{font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mini-sub{font-size:11.5px;color:var(--ink-soft);}
+.attn-row{border-left:2px solid var(--gold);padding-left:10px;}
+
+.motivation{
+  background:var(--sage-soft);border-radius:var(--r-lg);padding:18px 22px;font-family:var(--font-display);
+  font-size:16px;color:var(--sage-strong);font-style:italic;
+}
+
+/* badges/pills/chips */
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.2px;}
+.pill-sage{background:var(--sage-soft);color:var(--sage-strong);}
+.pill-blue{background:var(--blue-soft);color:var(--blue-strong);}
+.pill-gold{background:var(--gold-soft);color:var(--gold);}
+.pill-wine{background:var(--wine-soft);color:var(--wine);}
+.pill-neutral{background:var(--surface-sunken);color:var(--ink-soft);}
+.tag{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);}
+.sample-badge{font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-faint);border:1px dashed var(--ink-faint);padding:1px 6px;border-radius:6px;}
+
+/* toolbar/filters */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px;}
+.toolbar select,.toolbar input[type=text]{
+  padding:8px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--surface);color:var(--ink);font-size:13px;
+}
+.toolbar .tb-search{flex:1;min-width:160px;}
+
+/* index-card style vocab/phrase card */
+.idx-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:15px 17px;box-shadow:var(--shadow-sm);
+  cursor:pointer;position:relative;display:flex;flex-direction:column;gap:8px;
+}
+.idx-card::before{
+  content:"";position:absolute;top:0;left:16px;width:26px;height:6px;background:var(--surface-sunken);border-radius:0 0 5px 5px;
+}
+.idx-card:hover{box-shadow:var(--shadow);}
+.idx-card.due{border-left:3px solid var(--gold);}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.idx-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.idx-word{font-family:var(--font-display);font-size:18px;font-weight:600;}
+.idx-article{color:var(--blue-strong);font-weight:500;}
+.idx-translation{color:var(--ink-soft);font-size:13.5px;}
+.idx-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px;}
+.idx-actions{display:flex;gap:6px;margin-top:auto;padding-top:6px;}
+
+/* modal */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(20,16,8,0.42);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;
+}
+.modal{
+  background:var(--surface);border-radius:var(--r-lg);max-width:560px;width:100%;max-height:88vh;overflow-y:auto;
+  box-shadow:var(--shadow-lg);padding:26px 26px 22px;
+}
+.modal.modal-wide{max-width:760px;}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.modal-close{background:none;border:none;cursor:pointer;color:var(--ink-faint);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.modal-close:hover{background:var(--surface-sunken);color:var(--ink);}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-faint);margin-bottom:6px;font-weight:600;}
+.field input,.field select,.field textarea{
+  width:100%;padding:9px 12px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--surface-sunken);color:var(--ink);
+}
+.field textarea{min-height:64px;resize:vertical;font-family:inherit;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media (max-width:520px){.field-row{grid-template-columns:1fr;}}
+.field-hint{font-size:11.5px;color:var(--ink-faint);margin-top:4px;}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;border-top:1px solid var(--border);padding-top:16px;}
+
+/* toast */
+#toast-root{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:8px;align-items:center;}
+.toast{background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);
+  animation:toast-in .18s ease;}
+@keyframes toast-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* fab */
+.fab-wrap{position:fixed;right:26px;bottom:26px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.fab{
+  width:56px;height:56px;border-radius:50%;background:var(--sage-strong);color:#fff;border:none;box-shadow:var(--shadow-lg);
+  font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s ease;
+}
+.fab:hover{transform:scale(1.05);}
+.fab-menu{display:flex;flex-direction:column;gap:8px;align-items:flex-end;}
+.fab-item{
+  background:var(--surface);border:1px solid var(--border);padding:8px 14px;border-radius:999px;box-shadow:var(--shadow);
+  font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--ink);
+}
+.fab-item:hover{background:var(--surface-sunken);}
+
+/* empty state */
+.empty-state{text-align:center;padding:56px 20px;color:var(--ink-soft);}
+.empty-state .es-icon{font-size:34px;margin-bottom:12px;}
+.empty-state h4{font-size:17px;margin-bottom:6px;color:var(--ink);}
+.empty-state p{font-size:13.5px;margin-bottom:18px;max-width:340px;margin-left:auto;margin-right:auto;}
+
+/* confirm dialog reuses modal */
+.confirm-text{font-size:14px;color:var(--ink-soft);line-height:1.55;}
+
+/* detail drawer */
+.detail-section{margin-bottom:16px;}
+.detail-section .ds-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-faint);margin-bottom:5px;font-weight:600;}
+.detail-section .ds-body{font-size:14px;line-height:1.6;}
+.detail-example{background:var(--surface-sunken);border-radius:var(--r-sm);padding:10px 13px;font-style:italic;}
+.mistake-box{border-radius:var(--r-sm);padding:10px 13px;margin-bottom:6px;}
+.mistake-wrong{background:var(--wine-soft);color:var(--wine);}
+.mistake-right{background:var(--sage-soft);color:var(--sage-strong);}
+
+/* collapsible */
+.collapse-head{display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:4px 0;}
+.collapse-head svg{width:14px;height:14px;transition:transform .15s ease;}
+.collapse.open .collapse-head svg{transform:rotate(90deg);}
+.collapse-body{display:none;padding-top:8px;}
+.collapse.open .collapse-body{display:block;}
+
+/* grammar card */
+.grammar-card{padding:20px 22px;}
+.grammar-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px;}
+.rule-block{background:var(--blue-soft);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:10px;}
+.mistake-inline{display:flex;flex-direction:column;gap:4px;font-size:13.5px;margin-top:6px;}
+
+/* topics */
+.topic-level-head{font-family:var(--font-mono);font-size:12px;letter-spacing:1px;color:var(--ink-faint);margin:22px 0 10px;text-transform:uppercase;}
+.topic-level-head:first-child{margin-top:0;}
+.topic-card{padding:16px 18px;}
+.topic-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;}
+.topic-icon{font-size:20px;}
+.topic-counts{display:flex;gap:14px;font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
+.topic-counts b{color:var(--ink);font-family:var(--font-mono);}
+.progress-track{height:6px;background:var(--surface-sunken);border-radius:999px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--sage);border-radius:999px;}
+
+/* revision */
+.review-hero{text-align:center;padding:30px 20px;}
+.review-hero .rh-count{font-family:var(--font-display);font-size:52px;color:var(--sage-strong);}
+.flashcard{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);
+  padding:44px 30px;text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;
+}
+.flashcard .fc-prompt{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-faint);}
+.flashcard .fc-main{font-family:var(--font-display);font-size:30px;}
+.flashcard .fc-sub{color:var(--ink-soft);font-size:15px;}
+.review-progress{display:flex;gap:4px;margin-bottom:18px;}
+.review-progress span{flex:1;height:4px;border-radius:999px;background:var(--border);}
+.review-progress span.done{background:var(--sage);}
+.review-progress span.current{background:var(--blue);}
+.choice-grid{display:grid;gap:10px;margin-top:18px;}
+.choice-btn{padding:13px 16px;border-radius:var(--r-sm);border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:14.5px;text-align:left;}
+.choice-btn:hover{background:var(--surface-sunken);}
+.choice-btn.correct{background:var(--sage-soft);border-color:var(--sage);color:var(--sage-strong);}
+.choice-btn.wrong{background:var(--wine-soft);border-color:var(--wine);color:var(--wine);}
+.rate-row{display:flex;gap:10px;justify-content:center;margin-top:20px;}
+.rate-btn{flex:1;max-width:150px;padding:12px;border-radius:var(--r-md);border:1px solid var(--border);cursor:pointer;font-weight:600;font-size:13px;background:var(--surface);}
+.rate-know{color:var(--sage-strong);}
+.rate-know:hover{background:var(--sage-soft);}
+.rate-almost{color:var(--gold);}
+.rate-almost:hover{background:var(--gold-soft);}
+.rate-no{color:var(--wine);}
+.rate-no:hover{background:var(--wine-soft);}
+
+/* talk to me */
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:20px;}
+.preset-card{padding:16px 12px;text-align:center;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface);cursor:pointer;}
+.preset-card:hover{background:var(--surface-sunken);}
+.preset-card .pc-icon{font-size:24px;margin-bottom:6px;}
+.preset-card .pc-name{font-size:12.5px;font-weight:600;}
+.pick-list{max-height:230px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--r-sm);padding:6px;background:var(--surface-sunken);}
+.pick-row{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:6px;font-size:13px;}
+.pick-row:hover{background:var(--surface);}
+.prompt-output{
+  background:var(--ink);color:var(--bg);border-radius:var(--r-md);padding:18px;font-family:var(--font-mono);font-size:12.5px;
+  white-space:pre-wrap;line-height:1.6;max-height:340px;overflow-y:auto;
+}
+
+/* progress page chart */
+.week-chart{display:flex;align-items:flex-end;gap:10px;height:140px;padding:10px 4px;}
+.week-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;}
+.week-bar{width:100%;max-width:34px;background:var(--sage-soft);border-radius:6px 6px 3px 3px;position:relative;min-height:3px;}
+.week-bar.today{background:var(--sage);}
+.week-bar-label{font-size:10.5px;color:var(--ink-faint);font-family:var(--font-mono);}
+.goal-row{margin-bottom:16px;}
+.goal-row-head{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.goal-row-head b{font-family:var(--font-mono);}
+
+/* record widget */
+.audio-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.audio-note{font-size:11.5px;color:var(--ink-faint);margin-top:6px;}
+
+/* mobile bottom nav */
+.bottom-nav{display:none;}
+@media (max-width:860px){
+  .sidebar{display:none;}
+  .app-shell{display:block;}
+  .view{padding:18px 16px 90px;}
+  .topbar{padding:12px 16px;}
+  .bottom-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);
+    z-index:50;padding:6px 4px 8px;justify-content:space-around;
+  }
+  .bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--ink-faint);font-size:10px;padding:6px 4px;cursor:pointer;flex:1;}
+  .bn-item svg{width:19px;height:19px;}
+  .bn-item.active{color:var(--sage-strong);}
+  .fab-wrap{bottom:78px;right:18px;}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .dash-grid{gap:14px;}
+}
+@media (max-width:520px){
+  .stat-grid{grid-template-columns:repeat(2,1fr);}
+  .search-wrap{max-width:none;}
+  .view-title{font-size:22px;}
+}
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main-col">
+    <div class="topbar">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="global-search" placeholder="Search vocabulary, phrases, grammar, notes…" autocomplete="off">
+        <div class="search-results hidden" id="search-results"></div>
+      </div>
+      <div class="topbar-spacer"></div>
+      <div class="icon-btn" id="theme-note" title="Theme follows your system setting">🇩🇪</div>
+    </div>
+    <main id="view-root" class="view"></main>
+  </div>
+</div>
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<div class="fab-wrap" id="fab-wrap"></div>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script>
+/* ================= CONSTANTS ================= */
+const STORAGE_KEY = 'deutschJourneyData_v1';
+const CATEGORY_OPTIONS = ['everyday life','university','travel','food','transport','people','work','shopping','accommodation','health','social life','austrian german','other'];
+const PHRASE_CATEGORIES = ['everyday conversation','university','shopping','restaurant','transport','social life','accommodation','appointments','small talk','emergencies','austrian life'];
+const TOPIC_TREE = {
+  A1:['Introductions','Personal information','Family','Numbers','Time','Daily routine','Food & drinks','Shopping','Home','Transport','City','University basics','Free time','Weather'],
+  A2:['Travel','Health','Work','Social life','Appointments','Accommodation','Shopping problems','Everyday conversations'],
+  B1:['Opinions','Relationships','Education','Work','News','Society','Problems & solutions','Experiences','Discussions']
+};
+const ALL_TOPIC_NAMES = Array.from(new Set(Object.values(TOPIC_TREE).flat()));
+const VOCAB_STATUS = ['New','Learning','Familiar','Needs Practice','Mastered'];
+const GRAMMAR_STATUS = ['Not started','Learning','Confident','Needs Practice','Mastered'];
+const DIFFICULTY = ['Easy','Medium','Hard'];
+const REGION = ['Standard German','Austrian German','Both'];
+const MISTAKE_CATEGORY = ['Grammar','Vocabulary','Word order','Pronunciation'];
+const MISTAKE_STATUS = ['Still making this mistake','Improving','Fixed'];
+const NOTE_CATEGORY = ['Grammar','Vocabulary','Culture','Austria','Pronunciation','Questions','Mistakes','Other'];
+const LEVELS = ['A1','A2','B1','B2'];
+const ROADMAP = ['A1','A2','B1','B1+'];
+const SRS_INTERVAL = {'New':1,'Learning':3,'Familiar':7,'Needs Practice':1,'Mastered':30,'Not started':1,'Confident':10};
+const SPEAKING_PRESETS = [
+  {icon:'☕',name:'At a café'},{icon:'🛒',name:'At a supermarket'},{icon:'🚆',name:'At a train station'},
+  {icon:'🏠',name:'Renting an apartment'},{icon:'🎓',name:'At university'},{icon:'👋',name:'Meeting someone'},
+  {icon:'🩺',name:'At the doctor'},{icon:'📅',name:'Making an appointment'},{icon:'🍽',name:'At a restaurant'},
+  {icon:'🛍',name:'Shopping'},{icon:'💬',name:'Small talk'},{icon:'🇦🇹',name:'Everyday life in Austria'}
+];
+const MOTIVATIONS = [
+  'Small steps every day → confident German.',
+  'Jeden Tag ein bisschen besser.',
+  'Fluency is a thousand small reviews, not one big leap.',
+  'You are not behind. You are on your own Bahn, on time.',
+  'B1 is closer than it feels — keep boarding the next station.'
+];
+
+const ICONS = {
+  dashboard:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+  vocab:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>',
+  phrases:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+  grammar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  topics:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>',
+  revision:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>',
+  mistakes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>',
+  talk:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"/></svg>',
+  progress:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>',
+  notes:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>',
+  settings:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 0 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  mic:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg>',
+  edit:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>',
+  chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>',
+  volume:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+};
+
+/* ================= UTIL ================= */
+function uid(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4);}
+function todayISO(){return new Date().toISOString().slice(0,10);}
+function addDays(iso,n){const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function daysUntil(iso){const d=new Date(iso+'T00:00:00');const t=new Date(todayISO()+'T00:00:00');return Math.round((d-t)/86400000);}
+function fmtDate(iso){if(!iso)return '—';const d=new Date(iso+'T00:00:00');return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function cap(s){return s? s.charAt(0).toUpperCase()+s.slice(1):s;}
+function toCsvCell(v){v=(v==null?'':String(v)).replace(/"/g,'""');return '"'+v+'"';}
+
+function toast(msg){
+  const root=document.getElementById('toast-root');
+  const el=document.createElement('div');
+  el.className='toast';
+  el.textContent=msg;
+  root.appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';el.style.transition='opacity .25s';setTimeout(()=>el.remove(),250);},1800);
+}
+
+/* ================= SAMPLE DATA ================= */
+function buildSampleData(){
+  const t=todayISO();
+  return {
+    meta:{level:'A1',target:'B1+',streak:1,lastActiveDate:t,createdAt:t,checklist:{},checklistDate:t,goals:{vocabPerWeek:10,reviewsPerWeek:3,grammarPerWeek:2,speakingPerWeek:2}},
+    vocab:[
+      {id:uid(),word:'der Bahnhof',translation:'the train station',article:'der',plural:'die Bahnhöfe',pronunciation:'BAHN-hohf',audio:null,exampleDe:'Der Bahnhof ist in der Nähe.',exampleTranslation:'The train station is nearby.',note:'Compound word: Bahn (rail) + Hof (yard/court).',category:'transport',topic:'Transport',level:'A1',region:'Both',status:'Learning',difficulty:'Easy',dateAdded:t,lastReviewed:null,nextReview:t,isSample:true},
+      {id:uid(),word:'die Fahrkarte',translation:'the ticket',article:'die',plural:'die Fahrkarten',pronunciation:'FAHR-kar-teh',audio:null,exampleDe:'Ich brauche eine Fahrkarte nach Wien.',exampleTranslation:'I need a ticket to Vienna.',note:'',category:'transport',topic:'Transport',level:'A1',region:'Standard German',status:'New',difficulty:'Medium',dateAdded:t,lastReviewed:null,nextReview:t,isSample:true},
+      {id:uid(),word:'das Wasser',translation:'the water',article:'das',plural:'—',pronunciation:'VAS-uh',audio:null,exampleDe:'Ich trinke gern Wasser.',exampleTranslation:'I like to drink water.',note:'',category:'food',topic:'Food & drinks',level:'A1',region:'Both',status:'Familiar',difficulty:'Easy',dateAdded:t,lastReviewed:t,nextReview:addDays(t,7),isSample:true},
+      {id:uid(),word:'lernen',translation:'to learn',article:'',plural:'',pronunciation:'LEHR-nen',audio:null,exampleDe:'Ich lerne jeden Tag Deutsch.',exampleTranslation:'I learn German every day.',note:'Regular verb, present tense: -e / -st / -t.',category:'university',topic:'University basics',level:'A1',region:'Both',status:'Learning',difficulty:'Easy',dateAdded:t,lastReviewed:null,nextReview:t,isSample:true},
+      {id:uid(),word:'sprechen',translation:'to speak',article:'',plural:'',pronunciation:'SHPREH-khen',audio:null,exampleDe:'Sprichst du Deutsch?',exampleTranslation:'Do you speak German?',note:'Irregular: du sprichst, er spricht (stem vowel change e→i).',category:'people',topic:'Introductions',level:'A1',region:'Both',status:'New',difficulty:'Medium',dateAdded:t,lastReviewed:null,nextReview:t,isSample:true},
+      {id:uid(),word:'gehen',translation:'to go',article:'',plural:'',pronunciation:'GAY-en',audio:null,exampleDe:'Wir gehen ins Kino.',exampleTranslation:'We are going to the cinema.',note:'Perfect tense uses sein: ich bin gegangen.',category:'everyday life',topic:'Daily routine',level:'A1',region:'Both',status:'Mastered',difficulty:'Easy',dateAdded:t,lastReviewed:t,nextReview:addDays(t,30),isSample:true}
+    ],
+    phrases:[
+      {id:uid(),phrase:"Wie geht's dir?",translation:'How are you?',context:'Casual conversation with friends',category:'small talk',level:'A1',note:'Formal version: Wie geht es Ihnen?',audio:null,status:'Familiar',dateAdded:t,lastReviewed:t,nextReview:addDays(t,7),region:'Standard German',isSample:true},
+      {id:uid(),phrase:'Können Sie mir helfen?',translation:'Can you help me?',context:'Asking a stranger or shop assistant for help',category:'shopping',level:'A1',note:'',audio:null,status:'Learning',dateAdded:t,lastReviewed:null,nextReview:t,region:'Both',isSample:true},
+      {id:uid(),phrase:'Ich hätte gern einen Kaffee.',translation:"I'd like a coffee, please.",context:'Ordering at a café',category:'restaurant',level:'A1',note:'Polite conditional form of haben.',audio:null,status:'New',dateAdded:t,lastReviewed:null,nextReview:t,region:'Both',isSample:true}
+    ],
+    grammar:[
+      {id:uid(),title:'Present tense (regular verbs)',level:'A1',rule:'German verbs change their ending depending on the subject pronoun.',myExplanation:'Drop -en from the infinitive and add the ending for the subject.',examples:['ich lerne','du lernst','er/sie/es lernt','wir lernen','ihr lernt','sie/Sie lernen'],commonMistakes:'❌ Ich lernen Deutsch.\n✓ Ich lerne Deutsch.',myExamples:'Ich wohne in Lwiw.',keywords:'jeden Tag, immer, oft',relatedVocab:'lernen, sprechen, wohnen',topic:'Daily routine',status:'Learning',difficulty:'Easy',dateAdded:t,lastReviewed:null,isSample:true},
+      {id:uid(),title:'Definite articles (der/die/das)',level:'A1',rule:'Every German noun has a grammatical gender: masculine (der), feminine (die), or neuter (das).',myExplanation:'The article usually can\'t be guessed from meaning — it must be learned with the noun.',examples:['der Tisch (the table)','die Lampe (the lamp)','das Buch (the book)'],commonMistakes:'❌ Die Bahnhof\n✓ Der Bahnhof',myExamples:'',keywords:'der, die, das',relatedVocab:'Bahnhof, Fahrkarte, Wasser',topic:'Introductions',status:'Needs Practice',difficulty:'Hard',dateAdded:t,lastReviewed:null,isSample:true}
+    ],
+    topics:[],
+    notes:[
+      {id:uid(),title:'Austrian greetings differ from Germany',content:'In Austria, "Servus" is used casually for both hello and goodbye, and "Grüß Gott" is a common formal greeting rarely heard in Germany.',category:'Austria',level:'A1',tags:['#austria','#speaking'],dateAdded:t,isSample:true}
+    ],
+    mistakes:[
+      {id:uid(),mySentence:'Ich bin gehen zum Supermarkt.',correctVersion:'Ich gehe zum Supermarkt.',why:'Present tense needs a conjugated verb, not sein + infinitive.',category:'Grammar',status:'Improving',dateAdded:t,isSample:true}
+    ],
+    activity:{[t]:{vocab:0,phrases:0,grammar:0,reviews:0}}
+  };
+}
+
+/* ================= DATA LAYER ================= */
+let state = loadState();
+function loadState(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(raw) return migrateState(JSON.parse(raw));
+  }catch(e){console.warn('Could not read saved data, starting fresh.',e);}
+  const fresh=buildSampleData();
+  persist(fresh);
+  return fresh;
+}
+function migrateState(s){
+  s.vocab=s.vocab||[];s.phrases=s.phrases||[];s.grammar=s.grammar||[];s.topics=s.topics||[];
+  s.notes=s.notes||[];s.mistakes=s.mistakes||[];s.activity=s.activity||{};
+  s.meta=s.meta||{};
+  s.meta.checklist=s.meta.checklist||{};
+  s.meta.goals=s.meta.goals||{vocabPerWeek:10,reviewsPerWeek:3,grammarPerWeek:2,speakingPerWeek:2};
+  if(s.meta.checklistDate!==todayISO()){s.meta.checklist={};s.meta.checklistDate=todayISO();}
+  return s;
+}
+function persist(s){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+  }catch(e){
+    toast('⚠ Storage is full — try deleting a recording or exporting & clearing old data.');
+    console.error(e);
+  }
+}
+function save(){
+  persist(state);
+}
+function logActivity(kind){
+  const t=todayISO();
+  if(!state.activity[t]) state.activity[t]={vocab:0,phrases:0,grammar:0,reviews:0};
+  state.activity[t][kind]=(state.activity[t][kind]||0)+1;
+  bumpStreak();
+  save();
+}
+function bumpStreak(){
+  const t=todayISO();
+  const y=addDays(t,-1);
+  if(state.meta.lastActiveDate===t) return;
+  if(state.meta.lastActiveDate===y){state.meta.streak=(state.meta.streak||0)+1;}
+  else {state.meta.streak=1;}
+  state.meta.lastActiveDate=t;
+}
+/* ================= NAV / ROUTER ================= */
+const NAV_ITEMS = [
+  {id:'dashboard',label:'Dashboard',icon:'dashboard'},
+  {id:'vocab',label:'Vocabulary',icon:'vocab'},
+  {id:'phrases',label:'Phrases',icon:'phrases'},
+  {id:'grammar',label:'Grammar',icon:'grammar'},
+  {id:'topics',label:'Topics',icon:'topics'},
+  {id:'revision',label:'Revision',icon:'revision'},
+  {id:'mistakes',label:'My Mistakes',icon:'mistakes'},
+  {id:'talk',label:'Talk to Me',icon:'talk'},
+  {id:'progress',label:'Progress',icon:'progress'},
+  {id:'notes',label:'Notes',icon:'notes'},
+  {id:'settings',label:'Settings',icon:'settings'},
+];
+const BOTTOM_NAV_IDS = ['dashboard','vocab','revision','talk','progress'];
+let currentView = 'dashboard';
+let viewParam = null;
+
+function navigate(view, param){
+  currentView = view;
+  viewParam = param || null;
+  render();
+  document.getElementById('view-root').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function renderSidebar(){
+  const sb = document.getElementById('sidebar');
+  sb.innerHTML = `
+    <div class="brand">
+      <div class="brand-title">Deutsch Journey 🇩🇪</div>
+      <div class="brand-sub">Your personal German learning space</div>
+    </div>
+    <div class="level-chip">
+      <div><div class="lc-label">Level</div><div class="lc-value">${esc(state.meta.level)}</div></div>
+      <div style="text-align:right"><div class="lc-label">Target</div><div class="lc-value">${esc(state.meta.target)}</div></div>
+    </div>
+    <nav class="nav-group">
+      ${NAV_ITEMS.map(n=>`
+        <button class="nav-item ${currentView===n.id?'active':''}" data-action="nav" data-view="${n.id}">
+          ${ICONS[n.icon]}<span>${n.label}</span>
+        </button>`).join('')}
+    </nav>
+    <div class="sidebar-foot">🔥 ${state.meta.streak||0} day streak · data saved on this device</div>
+  `;
+  const bn = document.getElementById('bottom-nav');
+  bn.innerHTML = BOTTOM_NAV_IDS.map(id=>{
+    const n=NAV_ITEMS.find(x=>x.id===id);
+    return `<button class="bn-item ${currentView===id?'active':''}" data-action="nav" data-view="${id}">${ICONS[n.icon]}<span>${n.label.split(' ')[0]}</span></button>`;
+  }).join('');
+}
+
+function renderFab(){
+  const wrap = document.getElementById('fab-wrap');
+  wrap.innerHTML = `
+    <div class="fab-menu hidden" id="fab-menu">
+      <button class="fab-item" data-action="quick-add" data-type="vocab">+ Word</button>
+      <button class="fab-item" data-action="quick-add" data-type="phrase">+ Phrase</button>
+      <button class="fab-item" data-action="quick-add" data-type="grammar">+ Grammar</button>
+      <button class="fab-item" data-action="quick-add" data-type="note">+ Note</button>
+      <button class="fab-item" data-action="quick-add" data-type="mistake">+ Mistake</button>
+    </div>
+    <button class="fab" data-action="toggle-fab" aria-label="Quick add">+</button>
+  `;
+}
+
+/* ================= MODAL SYSTEM ================= */
+function openModal(html, opts){
+  const root = document.getElementById('modal-root');
+  const wide = opts && opts.wide ? ' modal-wide':'';
+  root.innerHTML = `<div class="modal-overlay" data-action="modal-overlay-click"><div class="modal${wide}" id="modal-box">${html}</div></div>`;
+  const first = root.querySelector('input,textarea,select');
+  if(first) setTimeout(()=>first.focus(),30);
+}
+function closeModal(){document.getElementById('modal-root').innerHTML='';}
+
+function confirmDialog(title, text, onConfirm, confirmLabel){
+  openModal(`
+    <div class="modal-head"><h3>${esc(title)}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <p class="confirm-text">${text}</p>
+    <div class="modal-actions">
+      <button class="btn" data-action="close-modal">Cancel</button>
+      <button class="btn btn-danger" id="confirm-yes">${esc(confirmLabel||'Delete')}</button>
+    </div>
+  `);
+  document.getElementById('confirm-yes').onclick = ()=>{closeModal(); onConfirm();};
+}
+
+/* ================= FORM FIELD BUILDER ================= */
+function fieldHTML(f, value){
+  const val = value==null?'':value;
+  const label = `<label for="f_${f.key}">${esc(f.label)}${f.required?' *':''}</label>`;
+  let input='';
+  if(f.type==='select'){
+    input = `<select id="f_${f.key}" name="${f.key}">${(f.options||[]).map(o=>{
+      const ov = typeof o==='object'?o.value:o;
+      const ol = typeof o==='object'?o.label:cap(o);
+      return `<option value="${esc(ov)}" ${String(val)===String(ov)?'selected':''}>${esc(ol)}</option>`;
+    }).join('')}</select>`;
+  } else if(f.type==='textarea'){
+    input = `<textarea id="f_${f.key}" name="${f.key}" placeholder="${esc(f.placeholder||'')}">${esc(val)}</textarea>`;
+  } else {
+    input = `<input type="text" id="f_${f.key}" name="${f.key}" value="${esc(val)}" placeholder="${esc(f.placeholder||'')}">`;
+  }
+  const hint = f.hint?`<div class="field-hint">${esc(f.hint)}</div>`:'';
+  return `<div class="field">${label}${input}${hint}</div>`;
+}
+function buildFieldsHTML(fields, values){
+  values = values||{};
+  let out='';
+  let i=0;
+  while(i<fields.length){
+    if(fields[i].pairWith){
+      out += `<div class="field-row">${fieldHTML(fields[i], values[fields[i].key])}${fieldHTML(fields[i].pairWith, values[fields[i].pairWith.key])}</div>`;
+      i++;
+    } else {
+      out += fieldHTML(fields[i], values[fields[i].key]);
+      i++;
+    }
+  }
+  return out;
+}
+function readFields(fields, root){
+  root = root || document;
+  const data = {};
+  fields.forEach(f=>{
+    const el = root.querySelector('#f_'+f.key);
+    data[f.key] = el ? el.value.trim() : '';
+    if(f.pairWith){
+      const el2 = root.querySelector('#f_'+f.pairWith.key);
+      data[f.pairWith.key] = el2 ? el2.value.trim() : '';
+    }
+  });
+  return data;
+}
+/* ================= AUDIO: TTS + RECORDING ================= */
+function speakGerman(text){
+  if(!('speechSynthesis' in window)){toast('Text-to-speech is not supported in this browser.');return;}
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'de-DE';
+  u.rate = 0.92;
+  window.speechSynthesis.speak(u);
+}
+
+let activeRecorder = null;
+let recordedChunks = [];
+function startRecording(btnId, holderId){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder==='undefined'){
+    document.getElementById(holderId).innerHTML = `<div class="audio-note">🎙 Microphone recording isn't supported in this browser/context. Use "🔊 Listen" for computer pronunciation instead.</div>`;
+    return;
+  }
+  navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+    recordedChunks = [];
+    let mime = 'audio/webm';
+    try{ if(!MediaRecorder.isTypeSupported(mime)) mime='';}catch(e){mime='';}
+    activeRecorder = mime ? new MediaRecorder(stream,{mimeType:mime}) : new MediaRecorder(stream);
+    activeRecorder.ondataavailable = e=>{if(e.data.size>0) recordedChunks.push(e.data);};
+    activeRecorder.onstop = ()=>{
+      stream.getTracks().forEach(tr=>tr.stop());
+      const blob = new Blob(recordedChunks, {type: activeRecorder.mimeType||'audio/webm'});
+      const reader = new FileReader();
+      reader.onloadend = ()=>{
+        window.__pendingAudio = reader.result;
+        document.getElementById(holderId).innerHTML = renderAudioWidget(reader.result, true);
+      };
+      reader.readAsDataURL(blob);
+    };
+    activeRecorder.start();
+    document.getElementById(holderId).innerHTML = `
+      <div class="audio-row"><span class="pill pill-wine">● Recording… (max 10s)</span>
+      <button type="button" class="btn btn-sm" data-action="stop-recording" data-holder="${holderId}">Stop</button></div>`;
+    setTimeout(()=>{ if(activeRecorder && activeRecorder.state==='recording') activeRecorder.stop(); },10000);
+  }).catch(err=>{
+    document.getElementById(holderId).innerHTML = `<div class="audio-note">🎙 Microphone access wasn't granted (${esc(err.name||'error')}). This can happen because the app runs inside a sandboxed preview. You can still use "🔊 Listen" for computer pronunciation, or record on your phone and add the sound as a note.</div>`;
+  });
+}
+function stopRecording(){ if(activeRecorder && activeRecorder.state==='recording') activeRecorder.stop(); }
+function renderAudioWidget(existingAudio, justRecorded){
+  window.__pendingAudio = existingAudio || window.__pendingAudio || null;
+  const holderId = 'audio-holder';
+  if(existingAudio){
+    return `<div class="audio-row">
+      <audio controls src="${existingAudio}" style="height:32px;max-width:220px;"></audio>
+      <button type="button" class="btn btn-sm btn-danger" data-action="delete-recording" data-holder="${holderId}">${ICONS.trash} Delete</button>
+    </div>${justRecorded?'<div class="field-hint">Recording ready — it will be saved with this entry.</div>':''}`;
+  }
+  return `<button type="button" class="btn btn-sm" data-action="start-recording" data-holder="${holderId}">${ICONS.mic} Record pronunciation</button>
+    <div class="audio-note">Records up to 10 seconds locally in your browser. If your browser blocks microphone access here, use "🔊 Listen" (computer voice) instead.</div>`;
+}
+function audioFieldBlock(existingAudio){
+  window.__pendingAudio = existingAudio || null;
+  return `<div class="field"><label>Pronunciation audio</label><div id="audio-holder">${renderAudioWidget(existingAudio)}</div></div>`;
+}
+
+/* ================= RENDER DISPATCH ================= */
+function render(){
+  renderSidebar();
+  renderFab();
+  const map = {
+    dashboard: renderDashboard, vocab: renderVocabView, phrases: renderPhrasesView,
+    grammar: renderGrammarView, topics: renderTopicsView, revision: renderRevisionView,
+    mistakes: renderMistakesView, talk: renderTalkView, progress: renderProgressView,
+    notes: renderNotesView, settings: renderSettingsView
+  };
+  const root = document.getElementById('view-root');
+  root.innerHTML = '';
+  (map[currentView]||renderDashboard)(root);
+}
+
+/* ================= DASHBOARD ================= */
+function levelIndex(lvl){return ROADMAP.indexOf(lvl);}
+function dueCount(arr){return arr.filter(x=>x.nextReview && daysUntil(x.nextReview)<=0).length;}
+
+function renderDashboard(root){
+  const dueVocab = dueCount(state.vocab), duePhrases = dueCount(state.phrases);
+  const quote = MOTIVATIONS[new Date().getDate()%MOTIVATIONS.length];
+  const checklistItems = [
+    {key:'vocab',label:'Review vocabulary'},
+    {key:'phrases',label:'Review phrases'},
+    {key:'grammar',label:'Grammar'},
+    {key:'speaking',label:'Speaking practice'}
+  ];
+  const recent = [
+    ...state.vocab.slice().sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded)).slice(0,3).map(v=>({t:v.word,s:`${v.level} · ${v.category}`,view:'vocab',id:v.id})),
+    ...state.phrases.slice().sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded)).slice(0,2).map(p=>({t:p.phrase,s:`${p.level} · ${p.category}`,view:'phrases',id:p.id})),
+    ...state.grammar.slice().sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded)).slice(0,2).map(g=>({t:g.title,s:g.level,view:'grammar',id:g.id})),
+  ].slice(0,6);
+  const attnVocab = state.vocab.filter(v=>v.status==='Needs Practice'||v.difficulty==='Hard').slice(0,3);
+  const attnGrammar = state.grammar.filter(g=>g.status==='Needs Practice').slice(0,2);
+  const attnPhrases = state.phrases.filter(p=> !p.lastReviewed || daysUntil(p.nextReview)<-7).slice(0,2);
+
+  root.innerHTML = `
+    <div class="view-head">
+      <div><h1 class="view-title">Dashboard</h1><div class="view-sub">${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})}</div></div>
+      <button class="btn btn-primary" data-action="open-level-editor">Update level</button>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-tile accent-sage"><div class="st-label">Current level</div><div class="st-value">${esc(state.meta.level)}</div><div class="st-hint">Beginner</div></div>
+      <div class="stat-tile accent-blue"><div class="st-label">Target</div><div class="st-value">${esc(state.meta.target)}</div><div class="st-hint">University-ready</div></div>
+      <div class="stat-tile"><div class="st-label">Words learned</div><div class="st-value">${state.vocab.length}</div><div class="st-hint">${state.vocab.filter(v=>v.status==='Mastered').length} mastered</div></div>
+      <div class="stat-tile"><div class="st-label">Phrases</div><div class="st-value">${state.phrases.length}</div><div class="st-hint">${state.phrases.filter(p=>p.status==='Mastered').length} mastered</div></div>
+      <div class="stat-tile"><div class="st-label">Grammar topics</div><div class="st-value">${state.grammar.length}</div><div class="st-hint">${state.grammar.filter(g=>g.status==='Mastered'||g.status==='Confident').length} confident</div></div>
+      <div class="stat-tile accent-gold"><div class="st-label">Words to review</div><div class="st-value">${dueVocab+duePhrases}</div><div class="st-hint">due now</div></div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-head"><h3>Your route: A1 → B1+</h3></div>
+      ${renderRoute(state.meta.level)}
+    </div>
+
+    <div class="dash-grid">
+      <div>
+        <div class="section-card">
+          <div class="section-head"><h3>Today's study</h3></div>
+          <div class="checklist">
+            ${checklistItems.map(c=>`
+              <div class="check-row ${state.meta.checklist[c.key]?'checked':''}" data-action="toggle-check" data-key="${c.key}">
+                <div class="check-box">${state.meta.checklist[c.key]?ICONS.check:''}</div>
+                <span class="check-text">${c.label}</span>
+              </div>`).join('')}
+          </div>
+        </div>
+        <div class="motivation">"${esc(quote)}"</div>
+      </div>
+      <div>
+        <div class="section-card">
+          <div class="section-head"><h3>Recently added</h3></div>
+          ${recent.length? `<div class="mini-list">${recent.map(r=>`
+            <div class="mini-row" style="cursor:pointer" data-action="nav" data-view="${r.view}">
+              <div class="mini-main"><div class="mini-title">${esc(r.t)}</div><div class="mini-sub">${esc(r.s)}</div></div>
+            </div>`).join('')}</div>` : `<p class="mini-sub">Nothing added yet — start with today's Busuu lesson.</p>`}
+        </div>
+        <div class="section-card">
+          <div class="section-head"><h3>Needs attention</h3></div>
+          ${(attnVocab.length+attnGrammar.length+attnPhrases.length)===0 ? `<p class="mini-sub">Nothing flagged right now — nice work.</p>` : `
+          <div class="mini-list">
+            ${attnVocab.map(v=>`<div class="mini-row attn-row"><div class="mini-main"><div class="mini-title">${esc(v.word)}</div><div class="mini-sub">Vocabulary · ${esc(v.status)}</div></div><span class="pill pill-gold">${esc(v.difficulty)}</span></div>`).join('')}
+            ${attnGrammar.map(g=>`<div class="mini-row attn-row"><div class="mini-main"><div class="mini-title">${esc(g.title)}</div><div class="mini-sub">Grammar · confusing</div></div><span class="pill pill-gold">Review</span></div>`).join('')}
+            ${attnPhrases.map(p=>`<div class="mini-row attn-row"><div class="mini-main"><div class="mini-title">${esc(p.phrase)}</div><div class="mini-sub">Phrase · not reviewed recently</div></div><span class="pill pill-gold">Review</span></div>`).join('')}
+          </div>`}
+        </div>
+      </div>
+    </div>
+
+    ${renderSnapshotCard()}
+  `;
+}
+
+function renderRoute(currentLevel){
+  const idx = levelIndex(currentLevel);
+  return `<div class="route">
+    ${ROADMAP.map((lvl,i)=>`
+      ${i>0?`<div class="route-line ${i<=idx?'done':''}"></div>`:''}
+      <div class="route-stop ${i<idx?'done':''} ${i===idx?'current':''}">
+        <div class="route-dot"></div><div class="route-label">${lvl}</div>
+      </div>
+    `).join('')}
+  </div>`;
+}
+
+function strongestTopic(){
+  const stats = topicStats();
+  const sorted = stats.filter(t=>t.total>0).sort((a,b)=>b.progress-a.progress);
+  return sorted[0] ? sorted[0].name : '—';
+}
+function weakestArea(){
+  const needsGrammar = state.grammar.filter(g=>g.status==='Needs Practice');
+  if(needsGrammar.length) return needsGrammar[0].title;
+  const needsVocab = state.vocab.filter(v=>v.status==='Needs Practice');
+  if(needsVocab.length) return needsVocab[0].word;
+  return '—';
+}
+function renderSnapshotCard(){
+  const dueVocab = dueCount(state.vocab), duePhrases = dueCount(state.phrases);
+  const lastMistake = state.mistakes.slice().sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded))[0];
+  return `
+    <div class="section-card" style="background:var(--surface-sunken);border-style:dashed;">
+      <div class="section-head"><h3>🇩🇪 My German Snapshot</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;font-size:13.5px;">
+        <div><div class="mini-sub">Current level</div><div class="mini-title mono">${esc(state.meta.level)}</div></div>
+        <div><div class="mini-sub">Target</div><div class="mini-title mono">${esc(state.meta.target)}</div></div>
+        <div><div class="mini-sub">Vocabulary</div><div class="mini-title mono">${state.vocab.length} words</div></div>
+        <div><div class="mini-sub">Phrases</div><div class="mini-title mono">${state.phrases.length}</div></div>
+        <div><div class="mini-sub">Grammar</div><div class="mini-title mono">${state.grammar.length} topics</div></div>
+        <div><div class="mini-sub">Needing review</div><div class="mini-title mono">${dueVocab+duePhrases}</div></div>
+        <div><div class="mini-sub">Streak</div><div class="mini-title mono">${state.meta.streak||0} day${state.meta.streak===1?'':'s'}</div></div>
+        <div><div class="mini-sub">Strongest topic</div><div class="mini-title">${esc(strongestTopic())}</div></div>
+        <div><div class="mini-sub">Needs attention</div><div class="mini-title">${esc(weakestArea())}</div></div>
+        <div><div class="mini-sub">Recent mistake</div><div class="mini-title">${lastMistake?esc(lastMistake.category):'—'}</div></div>
+      </div>
+      <p class="mini-sub" style="margin-top:12px;">Suggested next step: review ${dueVocab||5} vocabulary items, then try a "${SPEAKING_PRESETS[0].name}" conversation in <a href="#" data-action="nav" data-view="talk">Talk to Me</a>.</p>
+    </div>`;
+}
+
+function openLevelEditor(){
+  openModal(`
+    <div class="modal-head"><h3>Update your level</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <div class="field"><label>Current level</label><select id="lvl-current">${ROADMAP.map(l=>`<option ${l===state.meta.level?'selected':''}>${l}</option>`).join('')}</select></div>
+    <div class="field"><label>Target level</label><select id="lvl-target">${ROADMAP.map(l=>`<option ${l===state.meta.target?'selected':''}>${l}</option>`).join('')}</select></div>
+    <div class="modal-actions"><button class="btn" data-action="close-modal">Cancel</button><button class="btn btn-primary" id="save-level">Save</button></div>
+  `);
+  document.getElementById('save-level').onclick = ()=>{
+    state.meta.level = document.getElementById('lvl-current').value;
+    state.meta.target = document.getElementById('lvl-target').value;
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+/* ================= VOCABULARY ================= */
+const VOCAB_FIELDS = [
+  {key:'word',label:'German word',required:true,placeholder:'der Tisch'},
+  {key:'translation',label:'Translation',required:true,placeholder:'the table'},
+  {key:'article',label:'Article / gender',type:'select',options:['','der','die','das'],pairWith:{key:'plural',label:'Plural (optional)',placeholder:'die Tische'}},
+  {key:'pronunciation',label:'Pronunciation',placeholder:'e.g. TISH'},
+  {key:'exampleDe',label:'Example sentence (German)',type:'textarea'},
+  {key:'exampleTranslation',label:'Translation of example',type:'textarea'},
+  {key:'note',label:'My note',type:'textarea'},
+  {key:'category',label:'Category',type:'select',options:CATEGORY_OPTIONS,pairWith:{key:'topic',label:'Topic',type:'select',options:['',...ALL_TOPIC_NAMES]}},
+  {key:'level',label:'Level',type:'select',options:LEVELS,pairWith:{key:'region',label:'Region',type:'select',options:REGION}},
+  {key:'status',label:'Status',type:'select',options:VOCAB_STATUS,pairWith:{key:'difficulty',label:'Difficulty',type:'select',options:DIFFICULTY}},
+];
+let vocabFilters = {q:'',level:'',category:'',status:'',difficulty:'',sort:'newest'};
+
+function filteredVocab(){
+  let arr = state.vocab.filter(v=>{
+    if(vocabFilters.level && v.level!==vocabFilters.level) return false;
+    if(vocabFilters.category && v.category!==vocabFilters.category) return false;
+    if(vocabFilters.status && v.status!==vocabFilters.status) return false;
+    if(vocabFilters.difficulty && v.difficulty!==vocabFilters.difficulty) return false;
+    if(vocabFilters.q){
+      const q=vocabFilters.q.toLowerCase();
+      if(![v.word,v.translation,v.note,v.exampleDe].some(x=>(x||'').toLowerCase().includes(q))) return false;
+    }
+    return true;
+  });
+  if(vocabFilters.sort==='newest') arr.sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded));
+  else if(vocabFilters.sort==='az') arr.sort((a,b)=>a.word.localeCompare(b.word));
+  else if(vocabFilters.sort==='review') arr.sort((a,b)=>(a.nextReview||'9999').localeCompare(b.nextReview||'9999'));
+  return arr;
+}
+
+function renderVocabView(root){
+  const list = filteredVocab();
+  root.innerHTML = `
+    <div class="view-head">
+      <div><h1 class="view-title">Vocabulary</h1><div class="view-sub">${state.vocab.length} words in your notebook</div></div>
+      <button class="btn btn-primary" data-action="add-vocab">${ICONS.plus} Add Word</button>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="tb-search" placeholder="Search vocabulary…" id="vocab-search" value="${esc(vocabFilters.q)}">
+      <select id="vf-level"><option value="">All levels</option>${LEVELS.map(l=>`<option ${vocabFilters.level===l?'selected':''}>${l}</option>`).join('')}</select>
+      <select id="vf-category"><option value="">All categories</option>${CATEGORY_OPTIONS.map(c=>`<option value="${c}" ${vocabFilters.category===c?'selected':''}>${cap(c)}</option>`).join('')}</select>
+      <select id="vf-status"><option value="">All statuses</option>${VOCAB_STATUS.map(s=>`<option ${vocabFilters.status===s?'selected':''}>${s}</option>`).join('')}</select>
+      <select id="vf-difficulty"><option value="">Any difficulty</option>${DIFFICULTY.map(s=>`<option ${vocabFilters.difficulty===s?'selected':''}>${s}</option>`).join('')}</select>
+      <select id="vf-sort"><option value="newest" ${vocabFilters.sort==='newest'?'selected':''}>Newest first</option><option value="az" ${vocabFilters.sort==='az'?'selected':''}>A–Z</option><option value="review" ${vocabFilters.sort==='review'?'selected':''}>By review date</option></select>
+    </div>
+    ${state.vocab.length===0 ? emptyState('📗','Your German vocabulary library is empty.','Add your first word from today\'s Busuu lesson.','add-vocab','+ Add your first word')
+      : list.length===0 ? `<p class="mini-sub">No words match these filters.</p>`
+      : `<div class="card-grid">${list.map(vocabCardHTML).join('')}</div>`}
+  `;
+  document.getElementById('vocab-search').oninput = e=>{vocabFilters.q=e.target.value; renderVocabView(root);};
+  document.getElementById('vf-level').onchange = e=>{vocabFilters.level=e.target.value; renderVocabView(root);};
+  document.getElementById('vf-category').onchange = e=>{vocabFilters.category=e.target.value; renderVocabView(root);};
+  document.getElementById('vf-status').onchange = e=>{vocabFilters.status=e.target.value; renderVocabView(root);};
+  document.getElementById('vf-difficulty').onchange = e=>{vocabFilters.difficulty=e.target.value; renderVocabView(root);};
+  document.getElementById('vf-sort').onchange = e=>{vocabFilters.sort=e.target.value; renderVocabView(root);};
+}
+
+function statusPillClass(s){
+  if(s==='Mastered') return 'pill-sage';
+  if(s==='Needs Practice') return 'pill-wine';
+  if(s==='Familiar'||s==='Confident') return 'pill-blue';
+  return 'pill-neutral';
+}
+function vocabCardHTML(v){
+  const due = v.nextReview && daysUntil(v.nextReview)<=0;
+  return `<div class="idx-card ${due?'due':''}" data-action="open-vocab-detail" data-id="${v.id}">
+    <div class="idx-top">
+      <div><span class="idx-word">${v.article?`<span class="idx-article">${esc(v.article)}</span> `:''}${esc(v.article?v.word.replace(/^(der|die|das)\s+/,''):v.word)}</span></div>
+      ${v.isSample?'<span class="sample-badge">sample</span>':''}
+    </div>
+    <div class="idx-translation">${esc(v.translation)}</div>
+    <div class="idx-meta">
+      <span class="pill pill-neutral">${esc(v.level)}</span>
+      <span class="pill pill-neutral">${cap(v.category)}</span>
+      <span class="pill ${statusPillClass(v.status)}">${esc(v.status)}</span>
+      ${due?'<span class="pill pill-gold">Due</span>':''}
+    </div>
+    <div class="idx-actions">
+      <button class="btn btn-sm" data-action="speak" data-text="${esc(v.word.replace(/^(der|die|das)\s+/,''))}">${ICONS.volume}</button>
+      <button class="btn btn-sm" data-action="edit-vocab" data-id="${v.id}">${ICONS.edit}</button>
+      <button class="btn btn-sm btn-danger" data-action="delete-vocab" data-id="${v.id}">${ICONS.trash}</button>
+    </div>
+  </div>`;
+}
+function emptyState(icon,title,text,action,label){
+  return `<div class="empty-state"><div class="es-icon">${icon}</div><h4>${esc(title)}</h4><p>${esc(text)}</p><button class="btn btn-primary" data-action="${action}">${label}</button></div>`;
+}
+
+function openVocabForm(existing){
+  const isEdit = !!existing;
+  openModal(`
+    <div class="modal-head"><h3>${isEdit?'Edit word':'Add word'}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <form id="vocab-form">
+      ${buildFieldsHTML(VOCAB_FIELDS, existing||{})}
+      ${audioFieldBlock(existing?existing.audio:null)}
+      <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">${isEdit?'Save changes':'Add word'}</button></div>
+    </form>
+  `, {wide:true});
+  document.getElementById('vocab-form').onsubmit = e=>{
+    e.preventDefault();
+    const data = readFields(VOCAB_FIELDS);
+    if(!data.word || !data.translation){toast('Please fill in the word and translation.');return;}
+    if(isEdit){
+      Object.assign(existing, data, {audio: window.__pendingAudio});
+    } else {
+      state.vocab.unshift(Object.assign({
+        id:uid(), dateAdded:todayISO(), lastReviewed:null, nextReview:todayISO(), status:data.status||'New',
+        difficulty:data.difficulty||'Medium', level:data.level||'A1', isSample:false, audio:window.__pendingAudio
+      }, data));
+      logActivity('vocab');
+    }
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+function deleteVocab(id){
+  const item = state.vocab.find(v=>v.id===id);
+  confirmDialog('Delete this word?', `<b>${esc(item.word)}</b> — ${esc(item.translation)}<br>This can't be undone.`, ()=>{
+    state.vocab = state.vocab.filter(v=>v.id!==id); save(); render(); toast('Word deleted');
+  });
+}
+function openVocabDetail(id){
+  const v = state.vocab.find(x=>x.id===id);
+  if(!v) return;
+  openModal(`
+    <div class="modal-head">
+      <h3>${v.article?`<span class="idx-article">${esc(v.article)}</span> `:''}${esc(v.article?v.word.replace(/^(der|die|das)\s+/,''):v.word)}</h3>
+      <button class="modal-close" data-action="close-modal">✕</button>
+    </div>
+    <div class="idx-meta" style="margin-bottom:14px;">
+      <span class="pill pill-neutral">${esc(v.level)}</span><span class="pill pill-neutral">${cap(v.category)}</span>
+      <span class="pill ${statusPillClass(v.status)}">${esc(v.status)}</span><span class="pill pill-neutral">${esc(v.difficulty)}</span>
+      ${v.topic?`<span class="pill pill-blue">${esc(v.topic)}</span>`:''}
+      ${v.region==='Austrian German'?'<span class="pill pill-gold">🇦🇹 Austrian</span>':''}
+    </div>
+    <div class="detail-section"><div class="ds-label">Translation</div><div class="ds-body">${esc(v.translation)}${v.plural&&v.plural!=='—'?` · Plural: ${esc(v.plural)}`:''}</div></div>
+    ${v.pronunciation?`<div class="detail-section"><div class="ds-label">Pronunciation</div><div class="ds-body">${esc(v.pronunciation)} <button class="btn btn-sm" data-action="speak" data-text="${esc(v.word.replace(/^(der|die|das)\s+/,''))}">${ICONS.volume} Listen</button></div></div>`:''}
+    ${v.audio?`<div class="detail-section"><div class="ds-label">My recording</div><audio controls src="${v.audio}" style="height:32px;"></audio></div>`:''}
+    ${v.exampleDe?`<div class="detail-section"><div class="ds-label">Example</div><div class="detail-example">${esc(v.exampleDe)}${v.exampleTranslation?`<br><span style="font-style:normal;color:var(--ink-soft);font-size:12.5px;">${esc(v.exampleTranslation)}</span>`:''}</div></div>`:''}
+    ${v.note?`<div class="detail-section"><div class="ds-label">My note</div><div class="ds-body">${esc(v.note)}</div></div>`:''}
+    <div class="detail-section"><div class="ds-label">Review</div><div class="ds-body">Added ${fmtDate(v.dateAdded)} · Last reviewed ${fmtDate(v.lastReviewed)} · Next review ${fmtDate(v.nextReview)}</div></div>
+    <div class="modal-actions">
+      <button class="btn btn-danger" data-action="delete-vocab" data-id="${v.id}">${ICONS.trash} Delete</button>
+      <button class="btn" data-action="edit-vocab" data-id="${v.id}">${ICONS.edit} Edit</button>
+    </div>
+  `);
+}
+/* ================= PHRASES ================= */
+const PHRASE_FIELDS = [
+  {key:'phrase',label:'German phrase',required:true,placeholder:"Wie geht's dir?"},
+  {key:'translation',label:'Translation',required:true,placeholder:'How are you?'},
+  {key:'context',label:'Situation / context',type:'textarea',placeholder:'Casual conversation'},
+  {key:'note',label:'My note',type:'textarea'},
+  {key:'category',label:'Category',type:'select',options:PHRASE_CATEGORIES,pairWith:{key:'level',label:'Level',type:'select',options:LEVELS}},
+  {key:'region',label:'Region',type:'select',options:REGION,pairWith:{key:'status',label:'Status',type:'select',options:VOCAB_STATUS.filter(s=>s!=='Needs Practice')}},
+];
+let phraseFilters = {q:'',level:'',category:'',status:'',sort:'newest'};
+function filteredPhrases(){
+  let arr = state.phrases.filter(p=>{
+    if(phraseFilters.level && p.level!==phraseFilters.level) return false;
+    if(phraseFilters.category && p.category!==phraseFilters.category) return false;
+    if(phraseFilters.status && p.status!==phraseFilters.status) return false;
+    if(phraseFilters.q){
+      const q=phraseFilters.q.toLowerCase();
+      if(![p.phrase,p.translation,p.context,p.note].some(x=>(x||'').toLowerCase().includes(q))) return false;
+    }
+    return true;
+  });
+  if(phraseFilters.sort==='newest') arr.sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded));
+  else if(phraseFilters.sort==='az') arr.sort((a,b)=>a.phrase.localeCompare(b.phrase));
+  else if(phraseFilters.sort==='review') arr.sort((a,b)=>(a.nextReview||'9999').localeCompare(b.nextReview||'9999'));
+  return arr;
+}
+function renderPhrasesView(root){
+  const list = filteredPhrases();
+  root.innerHTML = `
+    <div class="view-head">
+      <div><h1 class="view-title">Phrases</h1><div class="view-sub">${state.phrases.length} phrases for real conversations</div></div>
+      <button class="btn btn-primary" data-action="add-phrase">${ICONS.plus} Add Phrase</button>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="tb-search" placeholder="Search phrases…" id="phrase-search" value="${esc(phraseFilters.q)}">
+      <select id="pf-level"><option value="">All levels</option>${LEVELS.map(l=>`<option ${phraseFilters.level===l?'selected':''}>${l}</option>`).join('')}</select>
+      <select id="pf-category"><option value="">All categories</option>${PHRASE_CATEGORIES.map(c=>`<option value="${c}" ${phraseFilters.category===c?'selected':''}>${cap(c)}</option>`).join('')}</select>
+      <select id="pf-status"><option value="">All statuses</option>${VOCAB_STATUS.filter(s=>s!=='Needs Practice').map(s=>`<option ${phraseFilters.status===s?'selected':''}>${s}</option>`).join('')}</select>
+      <select id="pf-sort"><option value="newest" ${phraseFilters.sort==='newest'?'selected':''}>Newest first</option><option value="az" ${phraseFilters.sort==='az'?'selected':''}>A–Z</option><option value="review" ${phraseFilters.sort==='review'?'selected':''}>By review date</option></select>
+    </div>
+    ${state.phrases.length===0 ? emptyState('💬','Your phrase bank is empty.','Add an expression you heard in your last Busuu lesson.','add-phrase','+ Add your first phrase')
+      : list.length===0 ? `<p class="mini-sub">No phrases match these filters.</p>`
+      : `<div class="card-grid">${list.map(phraseCardHTML).join('')}</div>`}
+  `;
+  document.getElementById('phrase-search').oninput = e=>{phraseFilters.q=e.target.value; renderPhrasesView(root);};
+  document.getElementById('pf-level').onchange = e=>{phraseFilters.level=e.target.value; renderPhrasesView(root);};
+  document.getElementById('pf-category').onchange = e=>{phraseFilters.category=e.target.value; renderPhrasesView(root);};
+  document.getElementById('pf-status').onchange = e=>{phraseFilters.status=e.target.value; renderPhrasesView(root);};
+  document.getElementById('pf-sort').onchange = e=>{phraseFilters.sort=e.target.value; renderPhrasesView(root);};
+}
+function phraseCardHTML(p){
+  const due = p.nextReview && daysUntil(p.nextReview)<=0;
+  return `<div class="idx-card ${due?'due':''}" data-action="open-phrase-detail" data-id="${p.id}">
+    <div class="idx-top"><span class="idx-word" style="font-size:15.5px;">"${esc(p.phrase)}"</span>${p.isSample?'<span class="sample-badge">sample</span>':''}</div>
+    <div class="idx-translation">${esc(p.translation)}</div>
+    <div class="idx-meta">
+      <span class="pill pill-neutral">${esc(p.level)}</span><span class="pill pill-neutral">${cap(p.category)}</span>
+      <span class="pill ${statusPillClass(p.status)}">${esc(p.status)}</span>${due?'<span class="pill pill-gold">Due</span>':''}
+    </div>
+    <div class="idx-actions">
+      <button class="btn btn-sm" data-action="speak" data-text="${esc(p.phrase)}">${ICONS.volume}</button>
+      <button class="btn btn-sm" data-action="edit-phrase" data-id="${p.id}">${ICONS.edit}</button>
+      <button class="btn btn-sm btn-danger" data-action="delete-phrase" data-id="${p.id}">${ICONS.trash}</button>
+    </div>
+  </div>`;
+}
+function openPhraseForm(existing){
+  const isEdit = !!existing;
+  openModal(`
+    <div class="modal-head"><h3>${isEdit?'Edit phrase':'Add phrase'}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <form id="phrase-form">
+      ${buildFieldsHTML(PHRASE_FIELDS, existing||{})}
+      ${audioFieldBlock(existing?existing.audio:null)}
+      <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">${isEdit?'Save changes':'Add phrase'}</button></div>
+    </form>
+  `, {wide:true});
+  document.getElementById('phrase-form').onsubmit = e=>{
+    e.preventDefault();
+    const data = readFields(PHRASE_FIELDS);
+    if(!data.phrase || !data.translation){toast('Please fill in the phrase and translation.');return;}
+    if(isEdit){ Object.assign(existing, data, {audio:window.__pendingAudio}); }
+    else {
+      state.phrases.unshift(Object.assign({id:uid(), dateAdded:todayISO(), lastReviewed:null, nextReview:todayISO(), status:data.status||'New', level:data.level||'A1', isSample:false, audio:window.__pendingAudio}, data));
+      logActivity('phrases');
+    }
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+function deletePhrase(id){
+  const item = state.phrases.find(p=>p.id===id);
+  confirmDialog('Delete this phrase?', `"${esc(item.phrase)}" — ${esc(item.translation)}<br>This can't be undone.`, ()=>{
+    state.phrases = state.phrases.filter(p=>p.id!==id); save(); render(); toast('Phrase deleted');
+  });
+}
+function openPhraseDetail(id){
+  const p = state.phrases.find(x=>x.id===id);
+  if(!p) return;
+  openModal(`
+    <div class="modal-head"><h3>"${esc(p.phrase)}"</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <div class="idx-meta" style="margin-bottom:14px;">
+      <span class="pill pill-neutral">${esc(p.level)}</span><span class="pill pill-neutral">${cap(p.category)}</span>
+      <span class="pill ${statusPillClass(p.status)}">${esc(p.status)}</span>
+      ${p.region==='Austrian German'?'<span class="pill pill-gold">🇦🇹 Austrian</span>':''}
+    </div>
+    <div class="detail-section"><div class="ds-label">Translation</div><div class="ds-body">${esc(p.translation)} <button class="btn btn-sm" data-action="speak" data-text="${esc(p.phrase)}">${ICONS.volume} Listen</button></div></div>
+    ${p.audio?`<div class="detail-section"><div class="ds-label">My recording</div><audio controls src="${p.audio}" style="height:32px;"></audio></div>`:''}
+    ${p.context?`<div class="detail-section"><div class="ds-label">Situation / context</div><div class="ds-body">${esc(p.context)}</div></div>`:''}
+    ${p.note?`<div class="detail-section"><div class="ds-label">My note</div><div class="ds-body">${esc(p.note)}</div></div>`:''}
+    <div class="detail-section"><div class="ds-label">Review</div><div class="ds-body">Added ${fmtDate(p.dateAdded)} · Next review ${fmtDate(p.nextReview)}</div></div>
+    <div class="modal-actions">
+      <button class="btn btn-danger" data-action="delete-phrase" data-id="${p.id}">${ICONS.trash} Delete</button>
+      <button class="btn" data-action="edit-phrase" data-id="${p.id}">${ICONS.edit} Edit</button>
+    </div>
+  `);
+}
+/* ================= GRAMMAR ================= */
+const GRAMMAR_FIELDS = [
+  {key:'title',label:'Title',required:true,placeholder:'Present tense'},
+  {key:'level',label:'Level',type:'select',options:LEVELS,pairWith:{key:'topic',label:'Topic (optional)',type:'select',options:['',...ALL_TOPIC_NAMES]}},
+  {key:'rule',label:'Key rule',type:'textarea'},
+  {key:'myExplanation',label:'My explanation',type:'textarea'},
+  {key:'examplesText',label:'Examples (one per line)',type:'textarea',placeholder:'Ich lerne Deutsch.\nDu lernst Deutsch.'},
+  {key:'commonMistakes',label:'Common mistakes',type:'textarea',placeholder:'❌ Ich lernen Deutsch.\n✓ Ich lerne Deutsch.'},
+  {key:'myExamples',label:'My own examples',type:'textarea'},
+  {key:'keywords',label:'Key / signal words',placeholder:'jeden Tag, immer, oft'},
+  {key:'relatedVocab',label:'Related vocabulary',placeholder:'lernen, sprechen'},
+  {key:'status',label:'Status',type:'select',options:GRAMMAR_STATUS,pairWith:{key:'difficulty',label:'Difficulty',type:'select',options:DIFFICULTY}},
+];
+let grammarFilters = {q:'',level:'',status:''};
+function filteredGrammar(){
+  return state.grammar.filter(g=>{
+    if(grammarFilters.level && g.level!==grammarFilters.level) return false;
+    if(grammarFilters.status && g.status!==grammarFilters.status) return false;
+    if(grammarFilters.q){
+      const q=grammarFilters.q.toLowerCase();
+      if(![g.title,g.rule,g.myExplanation].some(x=>(x||'').toLowerCase().includes(q))) return false;
+    }
+    return true;
+  }).sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded));
+}
+function renderGrammarView(root){
+  const list = filteredGrammar();
+  root.innerHTML = `
+    <div class="view-head">
+      <div><h1 class="view-title">Grammar</h1><div class="view-sub">${state.grammar.length} topics in your notebook</div></div>
+      <button class="btn btn-primary" data-action="add-grammar">${ICONS.plus} Add Grammar Topic</button>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="tb-search" placeholder="Search grammar…" id="grammar-search" value="${esc(grammarFilters.q)}">
+      <select id="gf-level"><option value="">All levels</option>${LEVELS.map(l=>`<option ${grammarFilters.level===l?'selected':''}>${l}</option>`).join('')}</select>
+      <select id="gf-status"><option value="">All statuses</option>${GRAMMAR_STATUS.map(s=>`<option ${grammarFilters.status===s?'selected':''}>${s}</option>`).join('')}</select>
+    </div>
+    ${state.grammar.length===0 ? emptyState('📐','Your grammar notebook is empty.','Add a rule you just learned on Busuu.','add-grammar','+ Add your first grammar topic')
+      : list.length===0 ? `<p class="mini-sub">No grammar topics match these filters.</p>`
+      : list.map(grammarCardHTML).join('')}
+  `;
+  document.getElementById('grammar-search').oninput = e=>{grammarFilters.q=e.target.value; renderGrammarView(root);};
+  document.getElementById('gf-level').onchange = e=>{grammarFilters.level=e.target.value; renderGrammarView(root);};
+  document.getElementById('gf-status').onchange = e=>{grammarFilters.status=e.target.value; renderGrammarView(root);};
+}
+function grammarCardHTML(g){
+  const examples = Array.isArray(g.examples)?g.examples:(g.examples||'').split('\n').filter(Boolean);
+  return `<div class="card grammar-card" style="margin-bottom:14px;">
+    <div class="grammar-title-row">
+      <div><h3>${esc(g.title)}</h3><div class="idx-meta" style="margin-top:6px;">
+        <span class="pill pill-neutral">${esc(g.level)}</span>
+        <span class="pill ${statusPillClass(g.status)}">${esc(g.status)}</span>
+        <span class="pill pill-neutral">${esc(g.difficulty)}</span>
+        ${g.topic?`<span class="pill pill-blue">${esc(g.topic)}</span>`:''}
+        ${g.isSample?'<span class="sample-badge">sample</span>':''}
+      </div></div>
+      <div class="idx-actions" style="padding-top:0;">
+        <button class="btn btn-sm" data-action="edit-grammar" data-id="${g.id}">${ICONS.edit}</button>
+        <button class="btn btn-sm btn-danger" data-action="delete-grammar" data-id="${g.id}">${ICONS.trash}</button>
+      </div>
+    </div>
+    ${g.rule?`<div class="rule-block"><b>Key rule.</b> ${esc(g.rule)}</div>`:''}
+    ${examples.length?`<div class="collapse open" data-collapse><div class="collapse-head" data-action="toggle-collapse">${ICONS.chevron}<b>Examples</b></div><div class="collapse-body">${examples.map(ex=>`<div class="detail-example" style="margin-bottom:6px;">${esc(ex)}</div>`).join('')}</div></div>`:''}
+    ${g.commonMistakes?`<div class="collapse" data-collapse><div class="collapse-head" data-action="toggle-collapse">${ICONS.chevron}<b>Common mistake</b></div><div class="collapse-body">${g.commonMistakes.split('\n').map(line=>`<div class="mistake-inline">${esc(line)}</div>`).join('')}</div></div>`:''}
+    ${g.myExplanation?`<div class="collapse" data-collapse><div class="collapse-head" data-action="toggle-collapse">${ICONS.chevron}<b>My explanation</b></div><div class="collapse-body"><p class="ds-body">${esc(g.myExplanation)}</p></div></div>`:''}
+    ${g.myExamples?`<div class="collapse" data-collapse><div class="collapse-head" data-action="toggle-collapse">${ICONS.chevron}<b>My own examples</b></div><div class="collapse-body"><p class="ds-body">${esc(g.myExamples)}</p></div></div>`:''}
+    ${(g.keywords||g.relatedVocab)?`<div class="collapse" data-collapse><div class="collapse-head" data-action="toggle-collapse">${ICONS.chevron}<b>Keywords & vocabulary</b></div><div class="collapse-body">${g.keywords?`<p class="ds-body">Signal words: ${esc(g.keywords)}</p>`:''}${g.relatedVocab?`<p class="ds-body">Related vocab: ${esc(g.relatedVocab)}</p>`:''}</div></div>`:''}
+  </div>`;
+}
+function openGrammarForm(existing){
+  const isEdit = !!existing;
+  const values = existing ? Object.assign({}, existing, {examplesText:(Array.isArray(existing.examples)?existing.examples.join('\n'):existing.examples||'')}) : {};
+  openModal(`
+    <div class="modal-head"><h3>${isEdit?'Edit grammar topic':'Add grammar topic'}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <form id="grammar-form">${buildFieldsHTML(GRAMMAR_FIELDS, values)}
+      <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">${isEdit?'Save changes':'Add topic'}</button></div>
+    </form>
+  `, {wide:true});
+  document.getElementById('grammar-form').onsubmit = e=>{
+    e.preventDefault();
+    const data = readFields(GRAMMAR_FIELDS);
+    if(!data.title){toast('Please give this grammar topic a title.');return;}
+    data.examples = data.examplesText.split('\n').map(s=>s.trim()).filter(Boolean);
+    delete data.examplesText;
+    if(isEdit){ Object.assign(existing, data); }
+    else {
+      state.grammar.unshift(Object.assign({id:uid(), dateAdded:todayISO(), lastReviewed:null, level:data.level||'A1', status:data.status||'Not started', isSample:false}, data));
+      logActivity('grammar');
+    }
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+function deleteGrammar(id){
+  const item = state.grammar.find(g=>g.id===id);
+  confirmDialog('Delete this grammar topic?', `<b>${esc(item.title)}</b><br>This can't be undone.`, ()=>{
+    state.grammar = state.grammar.filter(g=>g.id!==id); save(); render(); toast('Grammar topic deleted');
+  });
+}
+/* ================= TOPICS ================= */
+const STATUS_WEIGHT = {'New':0,'Not started':0,'Learning':0.35,'Familiar':0.65,'Confident':0.65,'Needs Practice':0.15,'Mastered':1};
+function topicStats(){
+  const names = new Set(ALL_TOPIC_NAMES);
+  state.topics.forEach(t=>names.add(t.name));
+  return Array.from(names).map(name=>{
+    const vocabItems = state.vocab.filter(v=>v.topic===name);
+    const phraseItems = state.phrases.filter(p=>p.topic===name);
+    const grammarItems = state.grammar.filter(g=>g.topic===name);
+    const all = [...vocabItems,...phraseItems,...grammarItems];
+    const total = all.length;
+    const progress = total? Math.round(100*all.reduce((s,i)=>s+(STATUS_WEIGHT[i.status]||0),0)/total) : 0;
+    const level = Object.keys(TOPIC_TREE).find(l=>TOPIC_TREE[l].includes(name)) || (state.topics.find(t=>t.name===name)||{}).level || 'Custom';
+    return {name, level, vocab:vocabItems.length, phrases:phraseItems.length, grammar:grammarItems.length, total, progress};
+  });
+}
+function renderTopicsView(root){
+  const stats = topicStats();
+  const byLevel = {};
+  stats.forEach(s=>{(byLevel[s.level]=byLevel[s.level]||[]).push(s);});
+  const order = ['A1','A2','B1','Custom'];
+  root.innerHTML = `
+    <div class="view-head">
+      <div><h1 class="view-title">Topics</h1><div class="view-sub">German organized by real-life situations</div></div>
+      <button class="btn btn-primary" data-action="add-topic">${ICONS.plus} New Topic</button>
+    </div>
+    ${order.filter(l=>byLevel[l]&&byLevel[l].length).map(level=>`
+      <div class="topic-level-head">${level}</div>
+      <div class="card-grid">
+        ${byLevel[level].map(t=>`
+          <div class="card topic-card" data-action="open-topic-detail" data-name="${esc(t.name)}" style="cursor:pointer;">
+            <div class="topic-card-head"><h3 style="font-size:15px;">${esc(t.name)}</h3><span class="pill pill-neutral">${esc(t.level)}</span></div>
+            <div class="topic-counts"><span>Vocab <b>${t.vocab}</b></span><span>Phrases <b>${t.phrases}</b></span><span>Grammar <b>${t.grammar}</b></span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:${t.progress}%;"></div></div>
+            <div class="field-hint" style="margin-top:6px;">${t.progress}% progress</div>
+          </div>`).join('')}
+      </div>`).join('')}
+  `;
+}
+function openTopicDetail(name){
+  const vocabItems = state.vocab.filter(v=>v.topic===name);
+  const phraseItems = state.phrases.filter(p=>p.topic===name);
+  const grammarItems = state.grammar.filter(g=>g.topic===name);
+  openModal(`
+    <div class="modal-head"><h3>${esc(name)}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    ${vocabItems.length?`<div class="detail-section"><div class="ds-label">Vocabulary (${vocabItems.length})</div>${vocabItems.map(v=>`<div class="mini-row"><span>${esc(v.word)} — ${esc(v.translation)}</span><span class="pill ${statusPillClass(v.status)}">${esc(v.status)}</span></div>`).join('')}</div>`:''}
+    ${phraseItems.length?`<div class="detail-section"><div class="ds-label">Phrases (${phraseItems.length})</div>${phraseItems.map(p=>`<div class="mini-row"><span>"${esc(p.phrase)}"</span><span class="pill ${statusPillClass(p.status)}">${esc(p.status)}</span></div>`).join('')}</div>`:''}
+    ${grammarItems.length?`<div class="detail-section"><div class="ds-label">Grammar (${grammarItems.length})</div>${grammarItems.map(g=>`<div class="mini-row"><span>${esc(g.title)}</span><span class="pill ${statusPillClass(g.status)}">${esc(g.status)}</span></div>`).join('')}</div>`:''}
+    ${(vocabItems.length+phraseItems.length+grammarItems.length)===0?`<p class="mini-sub">Nothing tagged with this topic yet. Assign it from a word, phrase or grammar topic's "Topic" field.</p>`:''}
+    <div class="modal-actions"><button class="btn" data-action="close-modal">Close</button></div>
+  `, {wide:true});
+}
+function openTopicForm(){
+  openModal(`
+    <div class="modal-head"><h3>New topic</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <div class="field"><label>Topic name</label><input id="new-topic-name" placeholder="e.g. Job interviews"></div>
+    <div class="field"><label>Level</label><select id="new-topic-level">${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
+    <div class="modal-actions"><button class="btn" data-action="close-modal">Cancel</button><button class="btn btn-primary" id="save-topic">Add topic</button></div>
+  `);
+  document.getElementById('save-topic').onclick = ()=>{
+    const name = document.getElementById('new-topic-name').value.trim();
+    if(!name){toast('Please name the topic.');return;}
+    state.topics.push({id:uid(), name, level:document.getElementById('new-topic-level').value, custom:true});
+    save(); closeModal(); render(); toast('Topic added ✓');
+  };
+}
+
+/* ================= NOTES ================= */
+const NOTE_FIELDS = [
+  {key:'title',label:'Title',required:true},
+  {key:'content',label:'Content',type:'textarea'},
+  {key:'category',label:'Category',type:'select',options:NOTE_CATEGORY,pairWith:{key:'level',label:'Level',type:'select',options:['',...LEVELS]}},
+  {key:'tagsText',label:'Tags (comma separated)',placeholder:'#grammar, #austria'},
+];
+let noteFilters={q:'',category:''};
+function filteredNotes(){
+  return state.notes.filter(n=>{
+    if(noteFilters.category && n.category!==noteFilters.category) return false;
+    if(noteFilters.q){
+      const q=noteFilters.q.toLowerCase();
+      if(![n.title,n.content,(n.tags||[]).join(' ')].some(x=>(x||'').toLowerCase().includes(q))) return false;
+    }
+    return true;
+  }).sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded));
+}
+function renderNotesView(root){
+  const list = filteredNotes();
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Notes</h1><div class="view-sub">${state.notes.length} personal notes</div></div>
+      <button class="btn btn-primary" data-action="add-note">${ICONS.plus} Add Note</button></div>
+    <div class="toolbar">
+      <input type="text" class="tb-search" placeholder="Search notes…" id="note-search" value="${esc(noteFilters.q)}">
+      <select id="nf-category"><option value="">All categories</option>${NOTE_CATEGORY.map(c=>`<option ${noteFilters.category===c?'selected':''}>${c}</option>`).join('')}</select>
+    </div>
+    ${state.notes.length===0?emptyState('📝','No notes yet.','Write down things you keep forgetting, cultural notes, or questions for your teacher.','add-note','+ Add your first note')
+      : list.length===0?`<p class="mini-sub">No notes match this search.</p>`
+      : `<div class="card-grid">${list.map(noteCardHTML).join('')}</div>`}
+  `;
+  document.getElementById('note-search').oninput=e=>{noteFilters.q=e.target.value; renderNotesView(root);};
+  document.getElementById('nf-category').onchange=e=>{noteFilters.category=e.target.value; renderNotesView(root);};
+}
+function noteCardHTML(n){
+  return `<div class="card card-pad" data-action="edit-note" data-id="${n.id}" style="cursor:pointer;display:flex;flex-direction:column;gap:6px;">
+    <div class="idx-top"><b>${esc(n.title)}</b>${n.isSample?'<span class="sample-badge">sample</span>':''}</div>
+    <p class="mini-sub" style="white-space:pre-wrap;">${esc((n.content||'').slice(0,140))}${(n.content||'').length>140?'…':''}</p>
+    <div class="idx-meta">${n.category?`<span class="pill pill-neutral">${esc(n.category)}</span>`:''}${n.level?`<span class="pill pill-blue">${esc(n.level)}</span>`:''}${(n.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join(' ')}</div>
+    <div class="idx-actions"><button class="btn btn-sm btn-danger" data-action="delete-note" data-id="${n.id}">${ICONS.trash}</button></div>
+  </div>`;
+}
+function openNoteForm(existing){
+  const isEdit=!!existing;
+  const values = existing ? Object.assign({}, existing, {tagsText:(existing.tags||[]).join(', ')}) : {};
+  openModal(`
+    <div class="modal-head"><h3>${isEdit?'Edit note':'Add note'}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <form id="note-form">${buildFieldsHTML(NOTE_FIELDS, values)}
+      <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">${isEdit?'Save changes':'Add note'}</button></div>
+    </form>`);
+  document.getElementById('note-form').onsubmit=e=>{
+    e.preventDefault();
+    const data = readFields(NOTE_FIELDS);
+    if(!data.title){toast('Please give the note a title.');return;}
+    data.tags = data.tagsText.split(',').map(s=>s.trim()).filter(Boolean).map(t=>t.startsWith('#')?t:'#'+t);
+    delete data.tagsText;
+    if(isEdit){Object.assign(existing,data);}
+    else{state.notes.unshift(Object.assign({id:uid(),dateAdded:todayISO(),isSample:false},data));}
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+function deleteNote(id){
+  const item=state.notes.find(n=>n.id===id);
+  confirmDialog('Delete this note?', `<b>${esc(item.title)}</b><br>This can't be undone.`, ()=>{
+    state.notes=state.notes.filter(n=>n.id!==id); save(); render(); toast('Note deleted');
+  });
+}
+
+/* ================= MISTAKES ================= */
+const MISTAKE_FIELDS = [
+  {key:'mySentence',label:'My sentence',type:'textarea',required:true,placeholder:'Ich bin gehen zum Supermarkt.'},
+  {key:'correctVersion',label:'Correct version',type:'textarea',required:true,placeholder:'Ich gehe zum Supermarkt.'},
+  {key:'why',label:'Why?',type:'textarea',placeholder:'Present tense needed here.'},
+  {key:'category',label:'Category',type:'select',options:MISTAKE_CATEGORY,pairWith:{key:'status',label:'Status',type:'select',options:MISTAKE_STATUS}},
+];
+function renderMistakesView(root){
+  const list = state.mistakes.slice().sort((a,b)=>b.dateAdded.localeCompare(a.dateAdded));
+  const counts = {};
+  list.forEach(m=>counts[m.category]=(counts[m.category]||0)+1);
+  const patterns = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">My Mistakes</h1><div class="view-sub">${state.mistakes.length} recorded — patterns show up over time</div></div>
+      <button class="btn btn-primary" data-action="add-mistake">${ICONS.plus} Add Mistake</button></div>
+    ${patterns.length?`<div class="idx-meta" style="margin-bottom:16px;">${patterns.map(([c,n])=>`<span class="pill pill-gold">${esc(c)} × ${n}</span>`).join('')}</div>`:''}
+    ${state.mistakes.length===0?emptyState('✗','No mistakes recorded yet.','Track sentences you get wrong to spot your own patterns.','add-mistake','+ Add your first mistake')
+      : list.map(mistakeCardHTML).join('')}
+  `;
+}
+function mistakeCardHTML(m){
+  const statusPill = m.status==='Fixed'?'pill-sage':m.status==='Improving'?'pill-blue':'pill-wine';
+  return `<div class="card card-pad" style="margin-bottom:12px;">
+    <div class="mistake-box mistake-wrong">❌ ${esc(m.mySentence)}</div>
+    <div class="mistake-box mistake-right">✓ ${esc(m.correctVersion)}</div>
+    ${m.why?`<p class="mini-sub" style="margin:6px 0 10px;">${esc(m.why)}</p>`:''}
+    <div class="idx-meta"><span class="pill pill-neutral">${esc(m.category)}</span><span class="pill ${statusPill}">${esc(m.status)}</span>${m.isSample?'<span class="sample-badge">sample</span>':''}</div>
+    <div class="idx-actions"><button class="btn btn-sm" data-action="edit-mistake" data-id="${m.id}">${ICONS.edit}</button><button class="btn btn-sm btn-danger" data-action="delete-mistake" data-id="${m.id}">${ICONS.trash}</button></div>
+  </div>`;
+}
+function openMistakeForm(existing){
+  const isEdit=!!existing;
+  openModal(`
+    <div class="modal-head"><h3>${isEdit?'Edit mistake':'Add mistake'}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <form id="mistake-form">${buildFieldsHTML(MISTAKE_FIELDS, existing||{})}
+      <div class="modal-actions"><button type="button" class="btn" data-action="close-modal">Cancel</button><button type="submit" class="btn btn-primary">${isEdit?'Save changes':'Add mistake'}</button></div>
+    </form>`);
+  document.getElementById('mistake-form').onsubmit=e=>{
+    e.preventDefault();
+    const data = readFields(MISTAKE_FIELDS);
+    if(!data.mySentence||!data.correctVersion){toast('Please fill in both sentences.');return;}
+    if(isEdit){Object.assign(existing,data);}
+    else{state.mistakes.unshift(Object.assign({id:uid(),dateAdded:todayISO(),status:data.status||'Still making this mistake',isSample:false},data));}
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+function deleteMistake(id){
+  confirmDialog('Delete this mistake?', `This can't be undone.`, ()=>{
+    state.mistakes = state.mistakes.filter(m=>m.id!==id); save(); render(); toast('Mistake deleted');
+  });
+}
+/* ================= REVISION ================= */
+function renderRevisionView(root){
+  const dv = state.vocab.filter(v=>daysUntil(v.nextReview)<=0);
+  const dp = state.phrases.filter(p=>daysUntil(p.nextReview)<=0);
+  const dg = state.grammar.filter(g=>g.status==='Needs Practice'||g.status==='Not started'||g.status==='Learning');
+  const dm = state.mistakes.filter(m=>m.status!=='Fixed');
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Revision</h1><div class="view-sub">Your review queue</div></div></div>
+    <div class="review-hero card" style="margin-bottom:20px;">
+      <div class="rh-count">${dv.length+dp.length}</div>
+      <div class="mini-sub">${dv.length} words · ${dp.length} phrases due · ${dg.length} grammar topics to strengthen</div>
+    </div>
+    <div class="card-grid" style="margin-bottom:10px;">
+      <button class="card card-pad btn-block" style="text-align:left;" data-action="start-review" data-mode="vocab">
+        <b>Review Vocabulary</b><div class="mini-sub">${dv.length} due</div></button>
+      <button class="card card-pad btn-block" style="text-align:left;" data-action="start-review" data-mode="phrases">
+        <b>Review Phrases</b><div class="mini-sub">${dp.length} due</div></button>
+      <button class="card card-pad btn-block" style="text-align:left;" data-action="start-review" data-mode="grammar">
+        <b>Review Grammar</b><div class="mini-sub">${dg.length} to strengthen</div></button>
+      <button class="card card-pad btn-block" style="text-align:left;background:var(--sage-soft);border-color:var(--sage);" data-action="start-review" data-mode="mixed">
+        <b>Review Everything</b><div class="mini-sub">Mixed session</div></button>
+    </div>
+    ${dm.length?`<div class="section-card"><div class="section-head"><h3>Mistake correction</h3></div>
+      <p class="mini-sub" style="margin-bottom:10px;">Also revise ${dm.length} mistake${dm.length>1?'s':''} you're still working on.</p>
+      <button class="btn" data-action="start-review" data-mode="mistakes">Practise corrections</button></div>`:''}
+  `;
+}
+
+let reviewSession = null;
+function buildQueue(mode){
+  let items = [];
+  if(mode==='vocab'||mode==='mixed') items.push(...state.vocab.filter(v=>mode==='mixed'?daysUntil(v.nextReview)<=0:true).map(v=>({kind:'vocab',ref:v})));
+  if(mode==='phrases'||mode==='mixed') items.push(...state.phrases.filter(p=>mode==='mixed'?daysUntil(p.nextReview)<=0:true).map(p=>({kind:'phrase',ref:p})));
+  if(mode==='grammar'||mode==='mixed') items.push(...state.grammar.filter(g=>g.status!=='Mastered').map(g=>({kind:'grammar',ref:g})));
+  if(mode==='mistakes'||mode==='mixed') items.push(...state.mistakes.filter(m=>m.status!=='Fixed').map(m=>({kind:'mistake',ref:m})));
+  if(mode==='vocab' && items.length===0) items = state.vocab.slice(0,10).map(v=>({kind:'vocab',ref:v}));
+  if(mode==='phrases' && items.length===0) items = state.phrases.slice(0,10).map(p=>({kind:'phrase',ref:p}));
+  for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];}
+  return items.slice(0,20);
+}
+function startReview(mode){
+  const queue = buildQueue(mode);
+  if(queue.length===0){toast('Nothing to review here yet — add some items first.');return;}
+  reviewSession = {queue, index:0, correct:0, needsPractice:0, revealed:false, chosen:null};
+  renderReviewScreen();
+}
+function pickDistractors(pool, correctVal, n){
+  const others = pool.filter(v=>v!==correctVal);
+  const shuffled = others.sort(()=>Math.random()-0.5).slice(0,n);
+  const all = [...shuffled, correctVal];
+  return all.sort(()=>Math.random()-0.5);
+}
+function buildActivity(entry){
+  const r = entry.ref;
+  if(entry.kind==='vocab'){
+    const options = ['flip-de-en','flip-en-de'];
+    if(r.article) options.push('mc-article');
+    if(r.exampleDe && r.exampleDe.length>4) options.push('fill-gap');
+    else options.push('mc-translation');
+    const type = options[Math.floor(Math.random()*options.length)];
+    return {type, entry};
+  }
+  if(entry.kind==='phrase'){
+    return {type: Math.random()<0.5?'flip-de-en':'flip-en-de', entry};
+  }
+  if(entry.kind==='grammar') return {type:'flip-grammar', entry};
+  return {type:'flip-mistake', entry};
+}
+function renderReviewScreen(){
+  const root = document.getElementById('view-root');
+  const s = reviewSession;
+  if(s.index>=s.queue.length){ renderReviewSummary(root); return; }
+  const entry = s.queue[s.index];
+  const activity = buildActivity(entry);
+  s.currentActivity = activity;
+  s.revealed = false; s.chosen = null;
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Review session</h1><div class="view-sub">Item ${s.index+1} of ${s.queue.length}</div></div>
+      <button class="btn" data-action="exit-review">Exit</button></div>
+    <div class="review-progress">${s.queue.map((_,i)=>`<span class="${i<s.index?'done':i===s.index?'current':''}"></span>`).join('')}</div>
+    <div id="review-stage"></div>
+  `;
+  renderActivity(activity);
+}
+function renderActivity(activity){
+  const stage = document.getElementById('review-stage');
+  const r = activity.entry.ref;
+  const kind = activity.entry.kind;
+  if(activity.type==='flip-de-en' || activity.type==='flip-en-de'){
+    const front = kind==='vocab' ? (activity.type==='flip-de-en'? r.word : r.translation) : (activity.type==='flip-de-en'? r.phrase : r.translation);
+    const back = kind==='vocab' ? (activity.type==='flip-de-en'? r.translation : r.word) : (activity.type==='flip-de-en'? r.translation : r.phrase);
+    stage.innerHTML = `
+      <div class="flashcard" id="fc" data-action="flip-card">
+        <div class="fc-prompt">${activity.type==='flip-de-en'?'German → translation':'Translation → German'}</div>
+        <div class="fc-main">${esc(front)}</div>
+        <div id="fc-back" class="fc-sub hidden">${esc(back)}</div>
+        <div class="field-hint" id="fc-tap">Tap card to reveal</div>
+      </div>
+      <div id="rate-area"></div>`;
+  } else if(activity.type==='mc-translation'){
+    const pool = state.vocab.map(v=>v.translation).filter(Boolean);
+    const opts = pickDistractors(pool, r.translation, 2);
+    stage.innerHTML = `
+      <div class="flashcard" style="cursor:default;">
+        <div class="fc-prompt">Choose the correct translation</div>
+        <div class="fc-main">${esc(r.word)}</div>
+      </div>
+      <div class="choice-grid" id="choice-grid">${opts.map(o=>`<button class="choice-btn" data-action="choose-answer" data-value="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+      <div id="rate-area"></div>`;
+    stage.dataset.correct = r.translation;
+  } else if(activity.type==='mc-article'){
+    const opts = ['der','die','das'];
+    stage.innerHTML = `
+      <div class="flashcard" style="cursor:default;">
+        <div class="fc-prompt">Choose the correct article</div>
+        <div class="fc-main">___ ${esc(r.word.replace(/^(der|die|das)\s+/,''))}</div>
+        <div class="fc-sub">${esc(r.translation)}</div>
+      </div>
+      <div class="choice-grid" id="choice-grid">${opts.map(o=>`<button class="choice-btn" data-action="choose-answer" data-value="${o}">${o}</button>`).join('')}</div>
+      <div id="rate-area"></div>`;
+    stage.dataset.correct = r.article;
+  } else if(activity.type==='fill-gap'){
+    const word = r.word.replace(/^(der|die|das)\s+/,'');
+    const gapped = r.exampleDe.replace(new RegExp(word,'i'), '____');
+    stage.innerHTML = `
+      <div class="flashcard" style="cursor:default;">
+        <div class="fc-prompt">Fill in the gap</div>
+        <div class="fc-main" style="font-size:20px;">${esc(gapped)}</div>
+        <div class="fc-sub">${esc(r.exampleTranslation||r.translation)}</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:16px;max-width:340px;margin-left:auto;margin-right:auto;">
+        <input type="text" id="gap-input" placeholder="Type the missing word" style="flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);">
+        <button class="btn btn-primary" data-action="check-gap">Check</button>
+      </div>
+      <div id="rate-area"></div>`;
+    stage.dataset.correct = word;
+  } else if(activity.type==='flip-grammar'){
+    stage.innerHTML = `
+      <div class="flashcard" id="fc" data-action="flip-card">
+        <div class="fc-prompt">Grammar recall</div>
+        <div class="fc-main" style="font-size:22px;">${esc(r.title)}</div>
+        <div id="fc-back" class="fc-sub hidden" style="text-align:left;max-width:420px;">${esc(r.rule||r.myExplanation||'')}</div>
+        <div class="field-hint" id="fc-tap">Tap to reveal the rule</div>
+      </div>
+      <div id="rate-area"></div>`;
+  } else if(activity.type==='flip-mistake'){
+    stage.innerHTML = `
+      <div class="flashcard" id="fc" data-action="flip-card">
+        <div class="fc-prompt">Correct this sentence</div>
+        <div class="fc-main" style="font-size:19px;">❌ ${esc(r.mySentence)}</div>
+        <div id="fc-back" class="fc-sub hidden">✓ ${esc(r.correctVersion)}${r.why?`<br><span style="font-size:12.5px;">${esc(r.why)}</span>`:''}</div>
+        <div class="field-hint" id="fc-tap">Tap to reveal the correction</div>
+      </div>
+      <div id="rate-area"></div>`;
+  }
+}
+function flipCard(){
+  document.getElementById('fc-back').classList.remove('hidden');
+  document.getElementById('fc-tap').textContent='';
+  showRateArea();
+}
+function chooseAnswer(btn){
+  const stage = document.getElementById('review-stage');
+  const correct = stage.dataset.correct;
+  const val = btn.dataset.value;
+  document.querySelectorAll('#choice-grid .choice-btn').forEach(b=>{
+    b.disabled = true;
+    if(b.dataset.value===correct) b.classList.add('correct');
+    else if(b===btn) b.classList.add('wrong');
+  });
+  showRateArea(val===correct);
+}
+function checkGap(){
+  const stage = document.getElementById('review-stage');
+  const correct = stage.dataset.correct.toLowerCase();
+  const val = document.getElementById('gap-input').value.trim().toLowerCase();
+  const ok = val===correct;
+  document.getElementById('gap-input').style.borderColor = ok?'var(--sage)':'var(--wine)';
+  document.getElementById('gap-input').disabled = true;
+  document.querySelector('[data-action="check-gap"]').disabled = true;
+  toast(ok?'Correct ✓':`Correct answer: ${stage.dataset.correct}`);
+  showRateArea(ok);
+}
+function showRateArea(suggestedCorrect){
+  document.getElementById('rate-area').innerHTML = `
+    <div class="rate-row">
+      <button class="rate-btn rate-know" data-action="rate-item" data-rating="know">✓ I knew it</button>
+      <button class="rate-btn rate-almost" data-action="rate-item" data-rating="almost">~ Almost</button>
+      <button class="rate-btn rate-no" data-action="rate-item" data-rating="no">✗ Didn't remember</button>
+    </div>`;
+}
+function rateItem(rating){
+  const s = reviewSession;
+  const entry = s.queue[s.index];
+  const r = entry.ref;
+  const statusList = entry.kind==='grammar' ? GRAMMAR_STATUS : VOCAB_STATUS;
+  if(entry.kind!=='mistake'){
+    let idx = statusList.indexOf(r.status);
+    if(idx<0) idx=0;
+    if(rating==='know'){ idx = Math.min(idx+1, statusList.length-1); if(statusList[idx]==='Needs Practice') idx++; r.status = statusList[Math.min(idx,statusList.length-1)]; s.correct++; }
+    else if(rating==='almost'){ r.status = entry.kind==='grammar'?'Learning':'Learning'; }
+    else { r.status = 'Needs Practice'; s.needsPractice++; }
+    r.lastReviewed = todayISO();
+    if(entry.kind!=='grammar') r.nextReview = addDays(todayISO(), SRS_INTERVAL[r.status]||3);
+  } else {
+    if(rating==='know'){ r.status='Fixed'; s.correct++; }
+    else if(rating==='almost'){ r.status='Improving'; }
+    else { r.status='Still making this mistake'; s.needsPractice++; }
+  }
+  logActivity('reviews');
+  s.index++;
+  renderReviewScreen();
+}
+function renderReviewSummary(root){
+  const s = reviewSession;
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Session complete</h1></div></div>
+    <div class="section-card" style="text-align:center;">
+      <div class="stat-grid" style="margin-top:6px;">
+        <div class="stat-tile"><div class="st-label">Reviewed</div><div class="st-value">${s.queue.length}</div></div>
+        <div class="stat-tile accent-sage"><div class="st-label">Correct</div><div class="st-value">${s.correct}</div></div>
+        <div class="stat-tile accent-gold"><div class="st-label">Needs practice</div><div class="st-value">${s.needsPractice}</div></div>
+      </div>
+      <button class="btn btn-primary" data-action="nav" data-view="revision">Back to Revision</button>
+    </div>
+  `;
+  reviewSession = null;
+}
+function exitReview(){ reviewSession=null; navigate('revision'); }
+/* ================= TALK TO ME ================= */
+let talkSelection = {vocab:new Set(), phrases:new Set(), grammar:new Set(), mistakes:new Set()};
+function renderTalkView(root){
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Talk to Me 🇩🇪</h1><div class="view-sub">Build a conversation-practice prompt for ChatGPT or Claude</div></div></div>
+    <div class="section-card">
+      <div class="section-head"><h3>Choose a situation</h3></div>
+      <div class="preset-grid">${SPEAKING_PRESETS.map(p=>`<div class="preset-card" data-action="use-preset" data-name="${esc(p.name)}"><div class="pc-icon">${p.icon}</div><div class="pc-name">${esc(p.name)}</div></div>`).join('')}</div>
+    </div>
+    <div class="section-card">
+      <div class="section-head"><h3>Or hand-pick what to practise</h3></div>
+      <div class="field-row">
+        <div>
+          <label style="font-size:11.5px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">Vocabulary</label>
+          <div class="pick-list">${state.vocab.length? state.vocab.map(v=>`<label class="pick-row"><input type="checkbox" data-action="toggle-pick" data-group="vocab" data-id="${v.id}" ${talkSelection.vocab.has(v.id)?'checked':''}> ${esc(v.word)} — ${esc(v.translation)}</label>`).join('') : `<p class="mini-sub">No vocabulary yet.</p>`}</div>
+        </div>
+        <div>
+          <label style="font-size:11.5px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">Phrases</label>
+          <div class="pick-list">${state.phrases.length? state.phrases.map(p=>`<label class="pick-row"><input type="checkbox" data-action="toggle-pick" data-group="phrases" data-id="${p.id}" ${talkSelection.phrases.has(p.id)?'checked':''}> "${esc(p.phrase)}"</label>`).join('') : `<p class="mini-sub">No phrases yet.</p>`}</div>
+        </div>
+      </div>
+      <div class="field-row" style="margin-top:10px;">
+        <div>
+          <label style="font-size:11.5px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">Grammar</label>
+          <div class="pick-list">${state.grammar.length? state.grammar.map(g=>`<label class="pick-row"><input type="checkbox" data-action="toggle-pick" data-group="grammar" data-id="${g.id}" ${talkSelection.grammar.has(g.id)?'checked':''}> ${esc(g.title)}</label>`).join('') : `<p class="mini-sub">No grammar topics yet.</p>`}</div>
+        </div>
+        <div>
+          <label style="font-size:11.5px;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">Mistakes</label>
+          <div class="pick-list">${state.mistakes.length? state.mistakes.map(m=>`<label class="pick-row"><input type="checkbox" data-action="toggle-pick" data-group="mistakes" data-id="${m.id}" ${talkSelection.mistakes.has(m.id)?'checked':''}> ${esc(m.mySentence.slice(0,40))}</label>`).join('') : `<p class="mini-sub">No mistakes logged yet.</p>`}</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="margin-top:16px;" data-action="generate-prompt">Create Practice Prompt</button>
+    </div>
+    <div class="section-card hidden" id="prompt-output-card">
+      <div class="section-head"><h3>Your AI practice prompt</h3><button class="btn btn-sm btn-primary" data-action="copy-prompt">Copy AI Practice Prompt</button></div>
+      <div class="prompt-output" id="prompt-output"></div>
+    </div>
+  `;
+}
+function usePreset(name){
+  const vocabPick = state.vocab.slice(0,8).map(v=>v.id);
+  const phrasePick = state.phrases.slice(0,5).map(p=>p.id);
+  talkSelection.vocab = new Set(vocabPick);
+  talkSelection.phrases = new Set(phrasePick);
+  talkSelection.grammar = new Set(state.grammar.slice(0,3).map(g=>g.id));
+  talkSelection.mistakes = new Set(state.mistakes.slice(0,3).map(m=>m.id));
+  generatePrompt(name);
+  renderTalkView(document.getElementById('view-root'));
+  document.getElementById('prompt-output-card').classList.remove('hidden');
+  document.getElementById('prompt-output').textContent = window.__lastPrompt;
+}
+function generatePrompt(situation){
+  const vocab = state.vocab.filter(v=>talkSelection.vocab.has(v.id));
+  const phrases = state.phrases.filter(p=>talkSelection.phrases.has(p.id));
+  const grammar = state.grammar.filter(g=>talkSelection.grammar.has(g.id));
+  const mistakes = state.mistakes.filter(m=>talkSelection.mistakes.has(m.id));
+  let lines = [];
+  lines.push('Act as my German conversation partner.');
+  lines.push('');
+  lines.push(`My current level is ${state.meta.level}, working toward ${state.meta.target}.`);
+  if(situation) lines.push(`Today's situation: ${situation}.`);
+  if(vocab.length){ lines.push(''); lines.push('Vocabulary to use:'); vocab.forEach(v=>lines.push(`- ${v.word} (${v.translation})`)); }
+  if(phrases.length){ lines.push(''); lines.push('Phrases to use:'); phrases.forEach(p=>lines.push(`- ${p.phrase} (${p.translation})`)); }
+  if(grammar.length){ lines.push(''); lines.push('Grammar to reinforce:'); grammar.forEach(g=>lines.push(`- ${g.title}`)); }
+  if(mistakes.length){ lines.push(''); lines.push('My common mistakes — please watch for these:'); mistakes.forEach(m=>lines.push(`- ${m.mySentence} → ${m.correctVersion}`)); }
+  lines.push('');
+  lines.push('Please speak to me mostly in simple German.');
+  lines.push('If I make a mistake:');
+  lines.push('1. Let me finish my sentence.');
+  lines.push('2. Correct me.');
+  lines.push('3. Briefly explain the mistake in English.');
+  lines.push('4. Ask me a natural follow-up question.');
+  lines.push('');
+  lines.push('Do not use vocabulary significantly above my level unless you explain it.');
+  lines.push('Simulate a realistic conversation rather than a textbook exercise.');
+  window.__lastPrompt = lines.join('\n');
+  return window.__lastPrompt;
+}
+function handleGeneratePrompt(){
+  generatePrompt(null);
+  document.getElementById('prompt-output-card').classList.remove('hidden');
+  document.getElementById('prompt-output').textContent = window.__lastPrompt;
+  document.getElementById('prompt-output-card').scrollIntoView({behavior:'smooth', block:'start'});
+}
+function copyPrompt(){
+  if(!window.__lastPrompt){toast('Create a prompt first.');return;}
+  navigator.clipboard.writeText(window.__lastPrompt).then(()=>toast('Prompt copied ✓')).catch(()=>toast('Could not copy — select the text manually.'));
+}
+function togglePick(group,id){
+  const set = talkSelection[group];
+  if(set.has(id)) set.delete(id); else set.add(id);
+}
+/* ================= PROGRESS ================= */
+function weekActivity(){
+  const days=[];
+  for(let i=6;i>=0;i--){
+    const d = addDays(todayISO(), -i);
+    const a = state.activity[d]||{vocab:0,phrases:0,grammar:0,reviews:0};
+    const total = a.vocab+a.phrases+a.grammar+a.reviews;
+    days.push({date:d, total, label:new Date(d+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short'}).slice(0,2)});
+  }
+  return days;
+}
+function weekCount(kind){
+  let n=0;
+  for(let i=6;i>=0;i--){ const d=addDays(todayISO(),-i); if(state.activity[d]) n+=(state.activity[d][kind]||0); }
+  return n;
+}
+function monthCount(kind, arr, dateField){
+  const cutoff = addDays(todayISO(), -30);
+  return arr.filter(x=>x[dateField]>=cutoff).length;
+}
+function renderProgressView(root){
+  const week = weekActivity();
+  const maxVal = Math.max(1, ...week.map(w=>w.total));
+  const goals = state.meta.goals;
+  const vocabWeek = weekCount('vocab');
+  const reviewsWeek = weekCount('reviews');
+  const grammarWeek = weekCount('grammar');
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Progress</h1><div class="view-sub">Your learning, measured honestly</div></div></div>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="st-label">Words this week</div><div class="st-value">${vocabWeek}</div></div>
+      <div class="stat-tile"><div class="st-label">Words this month</div><div class="st-value">${monthCount('vocab',state.vocab,'dateAdded')}</div></div>
+      <div class="stat-tile"><div class="st-label">Grammar completed</div><div class="st-value">${state.grammar.filter(g=>g.status==='Mastered'||g.status==='Confident').length}</div></div>
+      <div class="stat-tile"><div class="st-label">Phrases learned</div><div class="st-value">${state.phrases.filter(p=>p.status!=='New').length}</div></div>
+      <div class="stat-tile"><div class="st-label">Review sessions</div><div class="st-value">${reviewsWeek}</div><div class="st-hint">this week</div></div>
+      <div class="stat-tile accent-sage"><div class="st-label">Streak</div><div class="st-value">🔥 ${state.meta.streak||0}</div></div>
+    </div>
+    <div class="section-card">
+      <div class="section-head"><h3>CEFR roadmap</h3></div>
+      ${renderRoute(state.meta.level)}
+    </div>
+    <div class="dash-grid">
+      <div class="section-card">
+        <div class="section-head"><h3>Weekly activity</h3></div>
+        <div class="week-chart">${week.map(w=>`
+          <div class="week-bar-wrap">
+            <div class="week-bar ${w.date===todayISO()?'today':''}" style="height:${Math.max(4,(w.total/maxVal)*100)}%;" title="${w.total} actions"></div>
+            <div class="week-bar-label">${w.label}</div>
+          </div>`).join('')}</div>
+      </div>
+      <div class="section-card">
+        <div class="section-head"><h3>Weekly goals</h3><button class="btn btn-sm" data-action="edit-goals">Edit</button></div>
+        ${goalRow('Vocabulary', vocabWeek, goals.vocabPerWeek, 'words')}
+        ${goalRow('Revision sessions', reviewsWeek, goals.reviewsPerWeek, 'sessions')}
+        ${goalRow('Grammar topics', grammarWeek, goals.grammarPerWeek, 'topics')}
+      </div>
+    </div>
+  `;
+}
+function goalRow(label, current, target, unit){
+  const pct = Math.min(100, Math.round(100*current/Math.max(1,target)));
+  return `<div class="goal-row"><div class="goal-row-head"><span>${label}</span><b>${current} / ${target} ${unit}</b></div><div class="progress-track"><div class="progress-fill" style="width:${pct}%;"></div></div></div>`;
+}
+function openGoalsEditor(){
+  const g = state.meta.goals;
+  openModal(`
+    <div class="modal-head"><h3>Weekly goals</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <div class="field"><label>Vocabulary (words / week)</label><input type="text" id="g-vocab" value="${g.vocabPerWeek}"></div>
+    <div class="field"><label>Revision sessions / week</label><input type="text" id="g-reviews" value="${g.reviewsPerWeek}"></div>
+    <div class="field"><label>Grammar topics / week</label><input type="text" id="g-grammar" value="${g.grammarPerWeek}"></div>
+    <div class="modal-actions"><button class="btn" data-action="close-modal">Cancel</button><button class="btn btn-primary" id="save-goals">Save</button></div>
+  `);
+  document.getElementById('save-goals').onclick=()=>{
+    g.vocabPerWeek = parseInt(document.getElementById('g-vocab').value)||10;
+    g.reviewsPerWeek = parseInt(document.getElementById('g-reviews').value)||3;
+    g.grammarPerWeek = parseInt(document.getElementById('g-grammar').value)||2;
+    save(); closeModal(); render(); toast('Saved ✓');
+  };
+}
+
+/* ================= SETTINGS ================= */
+function renderSettingsView(root){
+  root.innerHTML = `
+    <div class="view-head"><div><h1 class="view-title">Settings</h1><div class="view-sub">Your level, data and backups</div></div></div>
+    <div class="section-card">
+      <div class="section-head"><h3>Level</h3></div>
+      <div class="field-row">
+        <div class="field"><label>Current level</label><select id="s-level">${ROADMAP.map(l=>`<option ${l===state.meta.level?'selected':''}>${l}</option>`).join('')}</select></div>
+        <div class="field"><label>Target level</label><select id="s-target">${ROADMAP.map(l=>`<option ${l===state.meta.target?'selected':''}>${l}</option>`).join('')}</select></div>
+      </div>
+      <button class="btn btn-primary" id="save-settings-level">Save level</button>
+    </div>
+    <div class="section-card">
+      <div class="section-head"><h3>Export your data</h3></div>
+      <p class="mini-sub" style="margin-bottom:12px;">This preview environment can't trigger file downloads directly, so exports open as copyable text — paste it into a plain-text file (e.g. <span class="mono">german-data.json</span>) to keep a backup.</p>
+      <div class="toolbar">
+        <button class="btn" data-action="export-data" data-format="json">Export All (JSON)</button>
+        <button class="btn" data-action="export-data" data-format="csv-vocab">Export Vocabulary (CSV)</button>
+        <button class="btn" data-action="export-data" data-format="csv-phrases">Export Phrases (CSV)</button>
+        <button class="btn" data-action="export-data" data-format="csv-grammar">Export Grammar (CSV)</button>
+        <button class="btn" data-action="export-data" data-format="csv-mistakes">Export Mistakes (CSV)</button>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-head"><h3>Import data</h3></div>
+      <p class="mini-sub" style="margin-bottom:12px;">Restore from a previously exported JSON file. This replaces your current data.</p>
+      <input type="file" id="import-file" accept=".json,application/json">
+    </div>
+    <div class="section-card" style="border-color:var(--wine-soft);">
+      <div class="section-head"><h3>Danger zone</h3></div>
+      <div class="toolbar">
+        <button class="btn" data-action="clear-sample-data">Clear sample data only</button>
+        <button class="btn btn-danger" data-action="reset-all-data">Reset all data</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('save-settings-level').onclick = ()=>{
+    state.meta.level = document.getElementById('s-level').value;
+    state.meta.target = document.getElementById('s-target').value;
+    save(); render(); toast('Saved ✓');
+  };
+  document.getElementById('import-file').onchange = e=>{
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try{
+        const imported = JSON.parse(reader.result);
+        confirmDialog('Replace all data?', 'Importing will overwrite your current vocabulary, phrases, grammar, notes and mistakes with the file you selected.', ()=>{
+          state = migrateState(imported); save(); render(); toast('Data imported ✓');
+        }, 'Import & replace');
+      }catch(err){ toast('That file could not be read as valid JSON.'); }
+    };
+    reader.readAsText(file);
+  };
+}
+function toCsv(rows, headers){
+  const lines = [headers.map(toCsvCell).join(',')];
+  rows.forEach(r=>lines.push(headers.map(h=>toCsvCell(r[h])).join(',')));
+  return lines.join('\n');
+}
+function exportData(format){
+  let text, label;
+  if(format==='json'){ text = JSON.stringify(state, null, 2); label='All data (JSON)'; }
+  else if(format==='csv-vocab'){ text = toCsv(state.vocab, ['word','translation','article','plural','level','category','status','difficulty','dateAdded']); label='Vocabulary (CSV)'; }
+  else if(format==='csv-phrases'){ text = toCsv(state.phrases, ['phrase','translation','context','level','category','status','dateAdded']); label='Phrases (CSV)'; }
+  else if(format==='csv-grammar'){ text = toCsv(state.grammar.map(g=>Object.assign({},g,{examples:(g.examples||[]).join(' | ')})), ['title','level','rule','status','difficulty','dateAdded']); label='Grammar (CSV)'; }
+  else if(format==='csv-mistakes'){ text = toCsv(state.mistakes, ['mySentence','correctVersion','why','category','status','dateAdded']); label='Mistakes (CSV)'; }
+  openModal(`
+    <div class="modal-head"><h3>${label}</h3><button class="modal-close" data-action="close-modal">✕</button></div>
+    <p class="mini-sub" style="margin-bottom:10px;">Select all and copy, then paste into a text file to save it.</p>
+    <textarea readonly style="width:100%;height:280px;font-family:var(--font-mono);font-size:12px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-sunken);color:var(--ink);" id="export-textarea">${esc(text)}</textarea>
+    <div class="modal-actions"><button class="btn btn-primary" data-action="copy-export">Select & Copy</button></div>
+  `, {wide:true});
+}
+function copyExportText(){
+  const ta = document.getElementById('export-textarea');
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(()=>toast('Copied ✓')).catch(()=>toast('Copy failed — text is selected, use Cmd/Ctrl+C.'));
+}
+function clearSampleData(){
+  confirmDialog('Clear sample data?', 'This removes only the items marked "sample" so you can start fresh with your own material.', ()=>{
+    state.vocab = state.vocab.filter(v=>!v.isSample);
+    state.phrases = state.phrases.filter(p=>!p.isSample);
+    state.grammar = state.grammar.filter(g=>!g.isSample);
+    state.notes = state.notes.filter(n=>!n.isSample);
+    state.mistakes = state.mistakes.filter(m=>!m.isSample);
+    save(); render(); toast('Sample data cleared');
+  }, 'Clear sample data');
+}
+function resetAllData(){
+  confirmDialog('Reset all data?', '<b>This permanently deletes everything</b> — vocabulary, phrases, grammar, notes and mistakes — from this browser. This cannot be undone.', ()=>{
+    localStorage.removeItem(STORAGE_KEY);
+    state = buildSampleData();
+    persist(state);
+    navigate('dashboard');
+    toast('All data has been reset');
+  }, 'Reset everything');
+}
+/* ================= GLOBAL SEARCH ================= */
+function runGlobalSearch(q){
+  const panel = document.getElementById('search-results');
+  if(!q || q.trim().length<2){ panel.classList.add('hidden'); panel.innerHTML=''; return; }
+  const needle = q.toLowerCase();
+  const hit = (...vals)=>vals.some(v=>(v||'').toLowerCase().includes(needle));
+  const groups = [
+    {label:'Vocabulary', view:'vocab', items: state.vocab.filter(v=>hit(v.word,v.translation,v.note,v.exampleDe)).slice(0,5).map(v=>({id:v.id,title:v.word,sub:v.translation}))},
+    {label:'Phrases', view:'phrases', items: state.phrases.filter(p=>hit(p.phrase,p.translation,p.context)).slice(0,5).map(p=>({id:p.id,title:p.phrase,sub:p.translation}))},
+    {label:'Grammar', view:'grammar', items: state.grammar.filter(g=>hit(g.title,g.rule,g.myExplanation)).slice(0,5).map(g=>({id:g.id,title:g.title,sub:g.level}))},
+    {label:'Notes', view:'notes', items: state.notes.filter(n=>hit(n.title,n.content)).slice(0,5).map(n=>({id:n.id,title:n.title,sub:n.category}))},
+    {label:'Mistakes', view:'mistakes', items: state.mistakes.filter(m=>hit(m.mySentence,m.correctVersion,m.why)).slice(0,5).map(m=>({id:m.id,title:m.mySentence,sub:m.category}))},
+  ].filter(g=>g.items.length);
+  if(!groups.length){ panel.innerHTML = `<div class="search-empty">No results for "${esc(q)}".</div>`; panel.classList.remove('hidden'); return; }
+  panel.innerHTML = groups.map(g=>`
+    <div class="search-group-label">${g.label}</div>
+    ${g.items.map(it=>`<div class="search-result-row" data-action="search-goto" data-view="${g.view}" data-id="${it.id}">
+      <span>${esc(it.title)}</span><span class="mini-sub">${esc(it.sub||'')}</span>
+    </div>`).join('')}
+  `).join('');
+  panel.classList.remove('hidden');
+}
+function searchGoto(view, id){
+  document.getElementById('search-results').classList.add('hidden');
+  document.getElementById('global-search').value='';
+  navigate(view);
+  setTimeout(()=>{
+    if(view==='vocab') openVocabDetail(id);
+    else if(view==='phrases') openPhraseDetail(id);
+    else if(view==='grammar') openGrammarForm(state.grammar.find(g=>g.id===id));
+    else if(view==='notes') openNoteForm(state.notes.find(n=>n.id===id));
+    else if(view==='mistakes') openMistakeForm(state.mistakes.find(m=>m.id===id));
+  }, 30);
+}
+
+/* ================= COLLAPSE ================= */
+function toggleCollapse(el){
+  const box = el.closest('[data-collapse]');
+  box.classList.toggle('open');
+}
+/* ================= QUICK ADD / FAB ================= */
+function quickAdd(type){
+  document.getElementById('fab-menu').classList.add('hidden');
+  if(type==='vocab') openVocabForm();
+  else if(type==='phrase') openPhraseForm();
+  else if(type==='grammar') openGrammarForm();
+  else if(type==='note') openNoteForm();
+  else if(type==='mistake') openMistakeForm();
+}
+function toggleFab(){ document.getElementById('fab-menu').classList.toggle('hidden'); }
+
+/* ================= EVENT DELEGATION ================= */
+document.addEventListener('click', e=>{
+  const el = e.target.closest('[data-action]');
+  const fab = document.getElementById('fab-menu');
+  if(fab && !fab.classList.contains('hidden') && !e.target.closest('.fab-wrap')) fab.classList.add('hidden');
+  const sr = document.getElementById('search-results');
+  if(sr && !sr.classList.contains('hidden') && !e.target.closest('.search-wrap')) { sr.classList.add('hidden'); }
+  if(!el) return;
+  const a = el.dataset.action;
+  switch(a){
+    case 'nav': navigate(el.dataset.view); break;
+    case 'open-level-editor': openLevelEditor(); break;
+    case 'toggle-check': {
+      const k = el.dataset.key;
+      state.meta.checklist[k] = !state.meta.checklist[k];
+      save(); renderDashboard(document.getElementById('view-root'));
+      break;
+    }
+    case 'add-vocab': openVocabForm(); break;
+    case 'edit-vocab': closeModal(); openVocabForm(state.vocab.find(v=>v.id===el.dataset.id)); break;
+    case 'delete-vocab': closeModal(); deleteVocab(el.dataset.id); break;
+    case 'open-vocab-detail': openVocabDetail(el.dataset.id); break;
+    case 'speak': speakGerman(el.dataset.text); break;
+    case 'add-phrase': openPhraseForm(); break;
+    case 'edit-phrase': closeModal(); openPhraseForm(state.phrases.find(p=>p.id===el.dataset.id)); break;
+    case 'delete-phrase': closeModal(); deletePhrase(el.dataset.id); break;
+    case 'open-phrase-detail': openPhraseDetail(el.dataset.id); break;
+    case 'add-grammar': openGrammarForm(); break;
+    case 'edit-grammar': openGrammarForm(state.grammar.find(g=>g.id===el.dataset.id)); break;
+    case 'delete-grammar': deleteGrammar(el.dataset.id); break;
+    case 'toggle-collapse': toggleCollapse(el); break;
+    case 'add-topic': openTopicForm(); break;
+    case 'open-topic-detail': openTopicDetail(el.dataset.name); break;
+    case 'add-note': openNoteForm(); break;
+    case 'edit-note': openNoteForm(state.notes.find(n=>n.id===el.dataset.id)); break;
+    case 'delete-note': closeModal(); deleteNote(el.dataset.id); break;
+    case 'add-mistake': openMistakeForm(); break;
+    case 'edit-mistake': openMistakeForm(state.mistakes.find(m=>m.id===el.dataset.id)); break;
+    case 'delete-mistake': deleteMistake(el.dataset.id); break;
+    case 'start-review': startReview(el.dataset.mode); break;
+    case 'exit-review': exitReview(); break;
+    case 'flip-card': flipCard(); break;
+    case 'choose-answer': chooseAnswer(el); break;
+    case 'check-gap': checkGap(); break;
+    case 'rate-item': rateItem(el.dataset.rating); break;
+    case 'use-preset': usePreset(el.dataset.name); break;
+    case 'toggle-pick': togglePick(el.dataset.group, el.dataset.id); break;
+    case 'generate-prompt': handleGeneratePrompt(); break;
+    case 'copy-prompt': copyPrompt(); break;
+    case 'edit-goals': openGoalsEditor(); break;
+    case 'export-data': exportData(el.dataset.format); break;
+    case 'copy-export': copyExportText(); break;
+    case 'clear-sample-data': clearSampleData(); break;
+    case 'reset-all-data': resetAllData(); break;
+    case 'close-modal': closeModal(); break;
+    case 'modal-overlay-click': if(e.target===el) closeModal(); break;
+    case 'quick-add': quickAdd(el.dataset.type); break;
+    case 'toggle-fab': toggleFab(); break;
+    case 'start-recording': startRecording(null, el.dataset.holder); break;
+    case 'stop-recording': stopRecording(); break;
+    case 'delete-recording': window.__pendingAudio=null; document.getElementById(el.dataset.holder).innerHTML = renderAudioWidget(null); break;
+    case 'search-goto': searchGoto(el.dataset.view, el.dataset.id); break;
+  }
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){ closeModal(); const sr=document.getElementById('search-results'); if(sr) sr.classList.add('hidden'); }
+});
+document.getElementById('global-search').addEventListener('input', e=>{
+  clearTimeout(window.__searchDebounce);
+  const val = e.target.value;
+  window.__searchDebounce = setTimeout(()=>runGlobalSearch(val), 150);
+});
+
+/* ================= INIT ================= */
+render();
+
+</script>
+</body>
+</html>
